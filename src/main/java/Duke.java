@@ -1,23 +1,29 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import static ui.UserGreeter.*;
 
 public class Duke {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String line;
+        String userInput;
+        ArrayList<String> listArray = new ArrayList<String>();
 
-        System.out.println("-----------------------");
         greetEntry();
-        System.out.println("-----------------------");
+
         while (true) {
-            line = in.nextLine();
-            if (!line.equals("bye")) {
-                System.out.println(line);
-            } else {
+            userInput = in.nextLine();
+            if (userInput.equals("bye")) {
                 break;
+
+            } else if (userInput.equals("list")) {
+                for (int listIndex = 1; listIndex <= listArray.size(); listIndex++) {
+                    System.out.println(listIndex + ". " + listArray.get(listIndex - 1));
+                }
+            } else {
+                listArray.add(userInput);
+                System.out.println("added: " + userInput);
             }
         }
         greetExit();
-        System.out.println("-----------------------");
     }
 }
