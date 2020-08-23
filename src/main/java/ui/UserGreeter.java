@@ -2,8 +2,9 @@ package ui;
 
 public class UserGreeter {
 
-    /*
-    ASCII ART from unknown author at https://pastebin.com/LPDM7dA0
+    /**
+     * Prints welcome message for User during entry.
+     * ASCII ART from unknown author at https://pastebin.com/LPDM7dA0
      */
     public static void greetEntry() {
         System.out.println("----------------------------------------------------");
@@ -15,8 +16,9 @@ public class UserGreeter {
         System.out.println("----------------------------------------------------");
     }
 
-    /*
-    ASCII ART from unknown author at https://pastebin.com/LPDM7dA0
+    /**
+     * Prints exit message for User during exit.
+     * ASCII ART from unknown author at https://pastebin.com/LPDM7dA0
      */
     public static void greetExit() {
         System.out.println("----------------------------------------------------");

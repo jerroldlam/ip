@@ -3,9 +3,11 @@
 ## Features 
 
 ### Feature 1 
-Description of feature.
+A personal helper which stores list of task to be completed and their respective completeness.
 
 ## Usage
+`list` - Lists out tasks and their completeness.
+`bye` - Exits program.
 
 ### `Keyword` - Describe action
 

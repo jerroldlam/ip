@@ -7,9 +7,9 @@ import model.Task;
 public class Duke {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String userInput;
         ArrayList<Task> taskArrayList = new ArrayList<Task>();
-
+        String userInput;
+        
         greetEntry();
 
         while (true) {
@@ -23,7 +23,8 @@ public class Duke {
                 for (int listIndex = 1; listIndex <= taskArrayList.size(); listIndex++) {
                     Task currentTask = taskArrayList.get(listIndex - 1);
                     System.out.print(listIndex + ". ");
-                    if (currentTask.isTaskDone()){
+
+                    if (currentTask.isTaskDone()) {
                         System.out.print("[✓] ");
                     } else {
                         System.out.print("[✗] ");
