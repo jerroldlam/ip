@@ -15,7 +15,6 @@ public class Duke {
             userInput = in.nextLine();
             if (userInput.equals("bye")) {
                 break;
-
             } else if (userInput.equals("list")) {
                 userTaskList.printTaskList();
             } else if (userInput.contains("done")) {

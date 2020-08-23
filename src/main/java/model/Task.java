@@ -1,11 +1,5 @@
 package model;
 
-/**
- * Class Task that stores the name of the task as a string and whether the task is done
- *
- * @param String taskName stores name of the task
- * @param boolean taskDone stores if the task is completed
- */
 public class Task {
     private String taskName;
     private boolean taskDone;
