@@ -1,6 +1,6 @@
 import java.util.Scanner;
-import static ui.UserGreeter.greetEntry;
-import static ui.UserGreeter.greetExit;
+import static function.UserGreeter.greetEntry;
+import static function.UserGreeter.greetExit;
 import function.TaskList;
 
 public class Duke {

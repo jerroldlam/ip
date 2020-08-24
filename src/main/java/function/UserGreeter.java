@@ -1,4 +1,4 @@
-package ui;
+package function;
 
 public class UserGreeter {
 
@@ -7,6 +7,7 @@ public class UserGreeter {
      * ASCII ART from unknown author at https://pastebin.com/LPDM7dA0
      */
     public static void greetEntry() {
+        System.out.println("-------------Duke assistant is starting-------------");
         System.out.println("----------------------------------------------------");
         System.out.println("    　　∧_∧               Hello...");
         System.out.println("      (  ･ω･)             You have woken me up...");

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class TaskList {
     private final ArrayList<Task> taskArrayList = new ArrayList<>();
     private int totalNumberOfTasks;
-    private int numberOfCompleteTasks;
+    private int numberOfCompletedTasks;
 
     public TaskList() {
         setTotalNumberOfTasks(0);
@@ -21,10 +21,10 @@ public class TaskList {
         this.totalNumberOfTasks = totalNumberOfTasks;
     }
 
-    public int getNumberOfCompleteTasks() { return numberOfCompleteTasks; }
+    public int getNumberOfCompleteTasks() { return numberOfCompletedTasks; }
 
-    public void setNumberOfCompleteTasks(int numberOfCompleteTasks) {
-        this.numberOfCompleteTasks = numberOfCompleteTasks;
+    public void setNumberOfCompleteTasks(int numberOfCompletedTasks) {
+        this.numberOfCompletedTasks = numberOfCompletedTasks;
     }
 
     /**
