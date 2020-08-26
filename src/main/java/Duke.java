@@ -13,11 +13,11 @@ public class Duke {
 
         while (true) {
             userInput = in.nextLine();
-            if (userInput.equals("bye")) {
+            if (userInput.equalsIgnoreCase("bye")) {
                 break;
-            } else if (userInput.equals("list")) {
+            } else if (userInput.equalsIgnoreCase("list")) {
                 userTaskList.printTaskList();
-            } else if (userInput.contains("done")) {
+            } else if (userInput.toLowerCase().contains("done")) {
                 userTaskList.setTaskComplete(userInput);
             } else {
                 userTaskList.addTask(userInput);

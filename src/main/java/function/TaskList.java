@@ -21,7 +21,8 @@ public class TaskList {
         this.totalNumberOfTasks = totalNumberOfTasks;
     }
 
-    public int getNumberOfCompleteTasks() { return numberOfCompletedTasks; }
+    public int getNumberOfCompleteTasks() {
+        return numberOfCompletedTasks; }
 
     public void setNumberOfCompleteTasks(int numberOfCompletedTasks) {
         this.numberOfCompletedTasks = numberOfCompletedTasks;
@@ -89,7 +90,7 @@ public class TaskList {
                 System.out.println("There's no such task to finish! Check your list!");
             }
         } catch (Exception notAnIntegerException) {
-            System.out.println("There's no integer after done, wasn't there?");
+            System.out.println("Please put an integer after done.");
         }
     }
 }

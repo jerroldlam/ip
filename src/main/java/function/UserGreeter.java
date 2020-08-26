@@ -7,8 +7,8 @@ public class UserGreeter {
      * ASCII ART from unknown author at https://pastebin.com/LPDM7dA0
      */
     public static void greetEntry() {
-        System.out.println("-------------Duke assistant is starting-------------");
-        System.out.println("----------------------------------------------------");
+        System.out.println("--------------------Waking Cid up---------------------");
+        System.out.println("------------------------------------------------------");
         System.out.println("    　　∧_∧               Hello...");
         System.out.println("      (  ･ω･)             You have woken me up...");
         System.out.println("  　 ＿|　⊃／(＿＿_         What can I do for you?");
