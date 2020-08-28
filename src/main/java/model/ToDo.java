@@ -9,5 +9,6 @@ public class ToDo extends Task {
     public void printTask() {
         System.out.print("[T]");
         super.printTask();
+        System.out.print("\n");
     }
 }

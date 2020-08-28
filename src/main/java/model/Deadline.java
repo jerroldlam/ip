@@ -20,6 +20,6 @@ public class Deadline extends Task {
     public void printTask() {
         System.out.print("[D]");
         super.printTask();
-        System.out.print("(by: " + getDeadlineBy() + ")");
+        System.out.print("(by: " + getDeadlineBy() + ")" + "\n");
     }
 }

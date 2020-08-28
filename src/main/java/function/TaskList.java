@@ -51,7 +51,6 @@ public class TaskList {
                 Task currentTask = taskArrayList.get(listIndex - 1);
                 System.out.print(listIndex + ". ");
                 currentTask.printTask();
-                System.out.print("\n");
             }
         }
     }
@@ -91,7 +90,7 @@ public class TaskList {
         setTotalNumberOfTasks(getTotalNumberOfTasks()+1);
         System.out.println("New task added: ");
         newEntry.printTask();
-        System.out.println("\nI'll keep track of it for you!");
+        System.out.println("I'll keep track of it for you!");
     }
 
     /**

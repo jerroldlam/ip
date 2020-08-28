@@ -20,6 +20,6 @@ public class Event extends Task {
     public void printTask() {
         System.out.print("[E]");
         super.printTask();
-        System.out.print("(at: " + getPeriod() + ")");
+        System.out.print("(at: " + getPeriod() + ")" +"\n");
     }
 }

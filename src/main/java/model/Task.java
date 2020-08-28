@@ -25,12 +25,17 @@ public class Task {
         this.taskDone = taskDone;
     }
 
-    public void printTask() {
+    public String getDoneSymbol() {
+        String symbol;
         if (this.isTaskDone()) {
-            System.out.print("[✓]");
+            symbol ="[✓]";
         } else {
-            System.out.print("[✗]");
+            symbol = "[✗]";
         }
-        System.out.print(this.getTaskName());
+        return symbol;
+    }
+
+    public void printTask() {
+        System.out.print(getDoneSymbol() + this.getTaskName());
     }
 }
