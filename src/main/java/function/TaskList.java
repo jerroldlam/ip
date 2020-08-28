@@ -120,7 +120,6 @@ public class TaskList {
     public void printAddTaskSuccessfully(Task currentTask) {
         System.out.println("Oh jolly! You finally completed this:");
         currentTask.printTask();
-        System.out.print("\n");
     }
 
     /**

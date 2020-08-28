@@ -1,7 +1,5 @@
 package model;
 
-import model.Task;
-
 public class Event extends Task {
     protected String period;
 

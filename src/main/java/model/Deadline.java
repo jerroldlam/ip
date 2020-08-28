@@ -1,7 +1,5 @@
 package model;
 
-import model.Task;
-
 public class Deadline extends Task {
     protected String deadlineBy;
 

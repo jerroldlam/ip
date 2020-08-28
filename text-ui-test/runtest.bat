@@ -14,7 +14,6 @@ javac  -cp ..\bin -Xlint:none -d ..\bin ..\src\main\java\model\ToDo.java
 javac  -cp ..\bin -Xlint:none -d ..\bin ..\src\main\java\model\Deadline.java
 javac  -cp ..\bin -Xlint:none -d ..\bin ..\src\main\java\model\Event.java
 javac  -cp ..\bin -Xlint:none -d ..\bin ..\src\main\java\function\TaskList.java
-
 javac  -cp ..\bin -Xlint:none -d ..\bin ..\src\main\java\Duke.java
 
 IF ERRORLEVEL 1 (

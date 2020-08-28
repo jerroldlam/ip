@@ -9,6 +9,7 @@ public class Duke {
         String userInput;
         
         showWelcomeMessage();
+
         while (true) {
             userInput = getUserInput();
             if (userInput.equalsIgnoreCase("bye")) {

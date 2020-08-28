@@ -1,6 +1,29 @@
 --------------------Waking Cid up-------------------
 ----------------------------------------------------
-----------------------------------------------------
-----------------------------------------------------
+New task added:
+[T][✗] buy bread
+I'll keep track of it for you!
+New task added:
+[D][✗] return book (by: Sunday)
+I'll keep track of it for you!
+New task added:
+[E][✗] project meeting (at: Mon 2-4pm)
+I'll keep track of it for you!
+Here is your current task list!
+You have 3 tasks on your list!
+You have completed 0 of them.
+Hope you are on target!
+1. [T][✗] buy bread
+2. [D][✗] return book (by: Sunday)
+3. [E][✗] project meeting (at: Mon 2-4pm)
+Oh jolly! You finally completed this:
+[D][✓] return book (by: Sunday)
+Here is your current task list!
+You have 3 tasks on your list!
+You have completed 1 of them.
+Hope you are on target!
+1. [T][✗] buy bread
+2. [D][✓] return book (by: Sunday)
+3. [E][✗] project meeting (at: Mon 2-4pm)
 ----------------------------------------------------
 ------------Cid has gone back to sleep--------------
