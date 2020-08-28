@@ -1,12 +1,12 @@
 --------------------Waking Cid up-------------------
 ----------------------------------------------------
-New task added:
+New task added: 
 [T][✗] buy bread
 I'll keep track of it for you!
-New task added:
+New task added: 
 [D][✗] return book (by: Sunday)
 I'll keep track of it for you!
-New task added:
+New task added: 
 [E][✗] project meeting (at: Mon 2-4pm)
 I'll keep track of it for you!
 Here is your current task list!

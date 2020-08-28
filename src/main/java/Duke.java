@@ -5,13 +5,14 @@ import function.TaskList;
 
 public class Duke {
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         TaskList userTaskList = new TaskList();
         String userInput;
         
         showWelcomeMessage();
 
         while (true) {
-            userInput = getUserInput();
+            userInput = in.nextLine();
             if (userInput.equalsIgnoreCase("bye")) {
                 break;
             } else if (userInput.equalsIgnoreCase("list")) {
@@ -23,10 +24,5 @@ public class Duke {
             }
         }
         showExitMessage();
-    }
-
-    public static String getUserInput() {
-        Scanner in = new Scanner(System.in);
-        return in.nextLine();
     }
 }

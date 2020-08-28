@@ -14,11 +14,35 @@ fi
 
 # compile the code into the bin folder, terminates if error occurred
 if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/function/UserGreeter.java
+then
+    echo "********** BUILD FAILURE **********"
+    exit 1
+fi
 if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/TaskType.java
+then
+    echo "********** BUILD FAILURE **********"
+    exit 1
+fi
 if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/Task.java
+then
+    echo "********** BUILD FAILURE **********"
+    exit 1
+fi
 if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/ToDo.java
+then
+    echo "********** BUILD FAILURE **********"
+    exit 1
+fi
 if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/Deadline.java
+then
+    echo "********** BUILD FAILURE **********"
+    exit 1
+fi
 if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/Event.java
+then
+    echo "********** BUILD FAILURE **********"
+    exit 1
+fi
 if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/function/TaskList.java
 then
     echo "********** BUILD FAILURE **********"
