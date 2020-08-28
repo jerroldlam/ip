@@ -1,18 +1,16 @@
 import java.util.Scanner;
-import static function.UserGreeter.greetEntry;
-import static function.UserGreeter.greetExit;
+import static function.UserGreeter.showWelcomeMessage;
+import static function.UserGreeter.showExitMessage;
 import function.TaskList;
 
 public class Duke {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
         TaskList userTaskList = new TaskList();
         String userInput;
         
-        greetEntry();
-
+        showWelcomeMessage();
         while (true) {
-            userInput = in.nextLine();
+            userInput = getUserInput();
             if (userInput.equalsIgnoreCase("bye")) {
                 break;
             } else if (userInput.equalsIgnoreCase("list")) {
@@ -23,6 +21,11 @@ public class Duke {
                 userTaskList.addTask(userInput);
             }
         }
-        greetExit();
+        showExitMessage();
+    }
+
+    public static String getUserInput() {
+        Scanner in = new Scanner(System.in);
+        return in.nextLine();
     }
 }

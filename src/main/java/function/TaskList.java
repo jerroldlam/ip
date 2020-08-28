@@ -6,7 +6,7 @@ import model.Event;
 import model.Task;
 import model.TaskType;
 import model.ToDo;
-import static function.UserGreeter.printError;
+import static function.UserGreeter.printErrorMessage;
 
 public class TaskList {
     private final ArrayList<Task> taskArrayList = new ArrayList<>();
@@ -39,7 +39,7 @@ public class TaskList {
      */
     public void printTaskList() {
         if (taskArrayList.isEmpty()) {
-            printError("You have no tasks yet!");
+            printErrorMessage("You have no tasks yet!");
             return;
         } else {
             System.out.println("Here is your current task list!");
@@ -83,7 +83,7 @@ public class TaskList {
             newEntry = new ToDo(toDoName);
             break;
         default:
-            printError("Error adding task. I only have todo, deadline and event.");
+            printErrorMessage("Error adding task. I only have todo, deadline and event.");
             return;
         }
         taskArrayList.add(newEntry);
@@ -107,16 +107,20 @@ public class TaskList {
             try {
                 Task currentTask = taskArrayList.get(taskNumberCompleted - 1);
                 currentTask.setTaskDone(true);
-                setNumberOfCompleteTasks(getNumberOfCompleteTasks()+1);
-                System.out.println("Oh jolly! You finally completed this:");
-                currentTask.printTask();
-                System.out.print("\n");
+                setNumberOfCompleteTasks(getNumberOfCompleteTasks() + 1);
+                printAddTaskSuccessfully(currentTask);
             } catch (Exception noSuchTaskException) {
-                printError("There's no such task to finish! Check your list!");
+                printErrorMessage("There's no such task to finish! Check your list!");
             }
         } catch (Exception notAnIntegerException) {
-            printError("Please put an integer after done.");
+            printErrorMessage("Please put an integer after done.");
         }
+    }
+
+    public void printAddTaskSuccessfully(Task currentTask) {
+        System.out.println("Oh jolly! You finally completed this:");
+        currentTask.printTask();
+        System.out.print("\n");
     }
 
     /**
