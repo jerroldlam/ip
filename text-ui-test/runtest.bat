@@ -7,7 +7,16 @@ REM delete output from previous run
 del ACTUAL.TXT
 
 REM compile the code into the bin folder
+javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\model\TaskType.java
+javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\model\Task.java
+javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\model\Deadline.java
+javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\model\Event.java
+javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\model\ToDo.java
+javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\function\TaskList.java
+javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\function\UserGreeter.java
 javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\Duke.java
+
+PAUSE
 IF ERRORLEVEL 1 (
     echo ********** BUILD FAILURE **********
     exit /b 1
@@ -19,3 +28,5 @@ java -classpath ..\bin Duke < input.txt > ACTUAL.TXT
 
 REM compare the output to the expected output
 FC ACTUAL.TXT EXPECTED.TXT
+
+PAUSE
