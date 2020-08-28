@@ -24,4 +24,13 @@ public class Task {
     public void setTaskDone(boolean taskDone) {
         this.taskDone = taskDone;
     }
+
+    public void printTask() {
+        if (this.isTaskDone()) {
+            System.out.print("[✓]");
+        } else {
+            System.out.print("[✗]");
+        }
+        System.out.print(this.getTaskName());
+    }
 }

@@ -1,7 +1,12 @@
 package function;
 
-import model.Task;
 import java.util.ArrayList;
+import model.Deadline;
+import model.Event;
+import model.Task;
+import model.TaskType;
+import model.ToDo;
+import static function.UserGreeter.printError;
 
 public class TaskList {
     private final ArrayList<Task> taskArrayList = new ArrayList<>();
@@ -34,7 +39,7 @@ public class TaskList {
      */
     public void printTaskList() {
         if (taskArrayList.isEmpty()) {
-            System.out.println("You have no tasks yet!");
+            printError("You have no tasks yet!");
             return;
         } else {
             System.out.println("Here is your current task list!");
@@ -45,29 +50,48 @@ public class TaskList {
             for (int listIndex = 1; listIndex <= taskArrayList.size(); listIndex++) {
                 Task currentTask = taskArrayList.get(listIndex - 1);
                 System.out.print(listIndex + ". ");
-
-                if (currentTask.isTaskDone()) {
-                    System.out.print("[✓] ");
-                } else {
-                    System.out.print("[✗] ");
-                }
-                System.out.println(currentTask.getTaskName());
+                currentTask.printTask();
+                System.out.print("\n");
             }
         }
     }
 
     /**
-     * Takes a string of userInput and sets as name of a new task.
-     * Then, Adds the instance of the new task into taskArrayList.
+     * Takes a string of userInput and determines the TaskType intended.
+     * Creates an instance of the new TaskType,
+     * then, add the instance of the new task into taskArrayList.
      *
      * @param userInput name of new task.
      */
     public void addTask(String userInput) {
-        Task newTask = new Task(userInput);
-        taskArrayList.add(newTask);
+        TaskType newTaskType = getInputTaskType(userInput);
+        Task newEntry;
+
+        switch (newTaskType) {
+        case EVENT:
+            String eventName = getInputTaskName(userInput);
+            String period = getInputDetails(userInput);
+            newEntry = new Event(eventName,period);
+            break;
+        case DEADLINE:
+            String deadlineName = getInputTaskName(userInput);
+            String deadlineBy = getInputDetails(userInput);
+            newEntry = new Deadline(deadlineName,deadlineBy);
+            break;
+        case TODO:
+            int nameStartPoint = userInput.indexOf(" ");
+            String toDoName = userInput.substring(nameStartPoint);
+            newEntry = new ToDo(toDoName);
+            break;
+        default:
+            printError("Error adding task. I only have todo, deadline and event.");
+            return;
+        }
+        taskArrayList.add(newEntry);
         setTotalNumberOfTasks(getTotalNumberOfTasks()+1);
-        System.out.println("New task added: " + userInput);
-        System.out.println("I'll keep track of it for you!");
+        System.out.println("New task added: ");
+        newEntry.printTask();
+        System.out.println("\nI'll keep track of it for you!");
     }
 
     /**
@@ -82,15 +106,80 @@ public class TaskList {
         try {
             int taskNumberCompleted = Integer.parseInt(userInputNumber);
             try {
-                taskArrayList.get(taskNumberCompleted - 1).setTaskDone(true);
+                Task currentTask = taskArrayList.get(taskNumberCompleted - 1);
+                currentTask.setTaskDone(true);
                 setNumberOfCompleteTasks(getNumberOfCompleteTasks()+1);
                 System.out.println("Oh jolly! You finally completed this:");
-                System.out.println("  [✓] " + taskArrayList.get(taskNumberCompleted - 1).getTaskName());
+                currentTask.printTask();
+                System.out.print("\n");
             } catch (Exception noSuchTaskException) {
-                System.out.println("There's no such task to finish! Check your list!");
+                printError("There's no such task to finish! Check your list!");
             }
         } catch (Exception notAnIntegerException) {
-            System.out.println("Please put an integer after done.");
+            printError("Please put an integer after done.");
         }
+    }
+
+    /**
+     * Takes a string of userInput and returns an enumeration TaskType corresponding to the userInput.
+     * Returns null if userInput does not match any TaskType.
+     * userInput is case-insensitive.
+     *
+     * @param userInput of one word from the user
+     * @return TaskType of userInput
+     */
+    public TaskType getTaskType (String userInput) {
+        TaskType currentTaskType;
+
+        switch (userInput.toUpperCase()) {
+        case "TODO" :
+            currentTaskType =  TaskType.TODO;
+            break;
+        case "DEADLINE" :
+            currentTaskType = TaskType.DEADLINE;
+            break;
+        case "EVENT" :
+            currentTaskType = TaskType.EVENT;
+            break;
+        default:
+            currentTaskType = null;
+        }
+        return currentTaskType;
+    }
+
+    /**
+     * Processes the userInput and returns the TaskType of the userInput
+     *
+     * @param userInput of any length where the first word is the TaskType intended
+     * @return TaskType of userInput
+     */
+    public TaskType getInputTaskType (String userInput) {
+        String[] inputTaskType = userInput.split(" ");
+        return (getTaskType(inputTaskType[0]));
+    }
+
+    /**
+     * Process userInput and returns intended taskName
+     *
+     * @param userInput user's input
+     * @return String taskName - name of task
+     */
+    public String getInputTaskName (String userInput) {
+        int nameStartPoint = userInput.indexOf(" ");
+        int nameEndPoint = userInput.indexOf("/");
+        return userInput.substring(nameStartPoint,nameEndPoint);
+    }
+
+    /**
+     * Process userInput and returns intended details
+     *
+     * @param userInput user's input
+     * @return String details - details of task to be attached
+     */
+    public String getInputDetails (String userInput) {
+        int nameEndPoint = userInput.indexOf("/");
+        String roughDetails = userInput.substring(nameEndPoint);
+        int detailStartPoint = roughDetails.indexOf(" ") + 1;
+        return roughDetails.substring(detailStartPoint);
     }
 }
