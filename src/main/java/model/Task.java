@@ -1,8 +1,11 @@
 package model;
 
 public class Task {
+    private final String DONE_SYMBOL = "[✓]";
+    private final String UNDONE_SYMBOL = "[✗]";
     private String taskName;
     private boolean taskDone;
+
 
     public Task(String taskName) {
         setTaskName(taskName);
@@ -26,13 +29,11 @@ public class Task {
     }
 
     public String getDoneSymbol() {
-        String symbol;
         if (this.isTaskDone()) {
-            symbol ="[✓]";
+            return DONE_SYMBOL;
         } else {
-            symbol = "[✗]";
+            return UNDONE_SYMBOL;
         }
-        return symbol;
     }
 
     public void printTask() {

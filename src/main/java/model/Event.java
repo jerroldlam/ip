@@ -1,7 +1,8 @@
 package model;
 
 public class Event extends Task {
-    protected String period;
+    private final String EVENT_SYMBOL = "[E]";
+    private String period;
 
     public Event(String taskName,String period) {
         super(taskName);
@@ -18,7 +19,7 @@ public class Event extends Task {
 
     @Override
     public void printTask() {
-        System.out.print("[E]");
+        System.out.print(EVENT_SYMBOL);
         super.printTask();
         System.out.print("(at: " + getPeriod() + ")" +"\n");
     }

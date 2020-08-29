@@ -9,6 +9,11 @@ import model.ToDo;
 import static function.UserGreeter.printErrorMessage;
 
 public class TaskList {
+    private final String ERROR_NO_TASK = "You have no tasks yet!";
+    private final String ERROR_ADDING_TASK = "Error adding task. I only have todo, deadline and event.";
+    private final String ERROR_NO_SUCH_TASK = "There's no such task to finish! Check your list!";
+    private final String ERROR_NO_INTEGER_DONE = "Please put an integer after done.";
+    private final String COMPLETE_TASK_MESSAGE = "Oh jolly! You finally completed this:";
     private final ArrayList<Task> taskArrayList = new ArrayList<>();
     private int totalNumberOfTasks;
     private int numberOfCompletedTasks;
@@ -38,21 +43,45 @@ public class TaskList {
      * If task list is empty, it will inform the user of an empty task list.
      */
     public void printTaskList() {
-        if (taskArrayList.isEmpty()) {
-            printErrorMessage("You have no tasks yet!");
-            return;
+        if (taskListNotEmpty(taskArrayList)) {
+            printTaskListHeader();
+            printTaskListBody();
         } else {
-            System.out.println("Here is your current task list!");
-            System.out.println("You have " + getTotalNumberOfTasks() + " task"
-                    + ((getTotalNumberOfTasks()>1)? "s" :"") + " on your list!");
-            System.out.println("You have completed " + getNumberOfCompleteTasks() +" of them.");
-            System.out.println("Hope you are on target!");
-            for (int listIndex = 1; listIndex <= taskArrayList.size(); listIndex++) {
-                Task currentTask = taskArrayList.get(listIndex - 1);
-                System.out.print(listIndex + ". ");
-                currentTask.printTask();
-            }
+            printErrorMessage(ERROR_NO_TASK);
         }
+    }
+
+    /**
+     * Checks if taskArrayList is empty
+     *
+     * @param taskArrayList ArrayList of user's tasks
+     * @return boolean of whether it is not empty
+     */
+    public boolean taskListNotEmpty (ArrayList<Task> taskArrayList) {
+        return !(taskArrayList.isEmpty());
+    }
+
+    /**
+     * Prints the content of the task list with respective list index, task symbol, done symbol
+     * and description.
+     */
+    public void printTaskListBody() {
+        for (int listIndex = 1; listIndex <= taskArrayList.size(); listIndex++) {
+            Task currentTask = taskArrayList.get(listIndex - 1);
+            System.out.print(listIndex + ". ");
+            currentTask.printTask();
+        }
+    }
+
+    /**
+     * Prints header of the task list with total number of tasks and number of completed tasks.
+     */
+    public void printTaskListHeader() {
+        System.out.println("Here is your current task list!");
+        System.out.println("You have " + getTotalNumberOfTasks() + " task"
+                + ((getTotalNumberOfTasks()>1)? "s" :"") + " on your list!");
+        System.out.println("You have completed " + getNumberOfCompleteTasks() +" of them.");
+        System.out.println("Hope you are on target!");
     }
 
     /**
@@ -66,29 +95,52 @@ public class TaskList {
         TaskType newTaskType = getInputTaskType(userInput);
         Task newEntry;
 
-        switch (newTaskType) {
-        case EVENT:
-            String eventName = getInputTaskName(userInput);
-            String period = getInputDetails(userInput);
-            newEntry = new Event(eventName,period);
-            break;
-        case DEADLINE:
-            String deadlineName = getInputTaskName(userInput);
-            String deadlineBy = getInputDetails(userInput);
-            newEntry = new Deadline(deadlineName,deadlineBy);
-            break;
-        case TODO:
-            int nameStartPoint = userInput.indexOf(" ");
-            String toDoName = userInput.substring(nameStartPoint);
-            newEntry = new ToDo(toDoName);
-            break;
-        default:
-            printErrorMessage("Error adding task. I only have todo, deadline and event.");
-            return;
+        if (taskTypeIsValid(newTaskType)) {
+            switch (newTaskType) {
+            case EVENT:
+                String eventName = getInputTaskName(userInput);
+                String period = getInputDetails(userInput);
+                newEntry = new Event(eventName, period);
+                break;
+            case DEADLINE:
+                String deadlineName = getInputTaskName(userInput);
+                String deadlineBy = getInputDetails(userInput);
+                newEntry = new Deadline(deadlineName, deadlineBy);
+                break;
+            case TODO:
+                int nameStartPoint = userInput.indexOf(" ");
+                String toDoName = userInput.substring(nameStartPoint);
+                newEntry = new ToDo(toDoName);
+                break;
+            default:
+                printErrorMessage(ERROR_ADDING_TASK);
+                return;
+            }
+            taskArrayList.add(newEntry);
+            printAddTaskSuccessfully(newEntry);
+        } else {
+                printErrorMessage(ERROR_ADDING_TASK);
         }
-        taskArrayList.add(newEntry);
+    }
+
+    /**
+     * Checks if task type is valid
+     *
+     * @param type type to be checked
+     * @return boolean of validity
+     */
+    public boolean taskTypeIsValid (TaskType type) {
+        return !(type == null);
+    }
+
+    /**
+     * Prints a confirmation message of adding a newEntry successfully by echoing the entry of the task.
+     *
+     * @param newEntry object of Task or its subclasses.
+     */
+    public void printAddTaskSuccessfully(Task newEntry) {
         setTotalNumberOfTasks(getTotalNumberOfTasks()+1);
-        System.out.println("New task added: ");
+        System.out.println("New task added: \n\t");
         newEntry.printTask();
         System.out.println("I'll keep track of it for you!");
     }
@@ -108,17 +160,23 @@ public class TaskList {
                 Task currentTask = taskArrayList.get(taskNumberCompleted - 1);
                 currentTask.setTaskDone(true);
                 setNumberOfCompleteTasks(getNumberOfCompleteTasks() + 1);
-                printAddTaskSuccessfully(currentTask);
+                printCompleteTaskSuccessfully(currentTask);
             } catch (Exception noSuchTaskException) {
-                printErrorMessage("There's no such task to finish! Check your list!");
+                printErrorMessage(ERROR_NO_SUCH_TASK);
             }
         } catch (Exception notAnIntegerException) {
-            printErrorMessage("Please put an integer after done.");
+            printErrorMessage(ERROR_NO_INTEGER_DONE);
         }
     }
 
-    public void printAddTaskSuccessfully(Task currentTask) {
-        System.out.println("Oh jolly! You finally completed this:");
+    /**
+     * Prints a confirmation message of successfully setting a task as complete
+     * and echoes the task.
+     *
+     * @param currentTask Task that was completed
+     */
+    public void printCompleteTaskSuccessfully(Task currentTask) {
+        System.out.println(COMPLETE_TASK_MESSAGE);
         currentTask.printTask();
     }
 
