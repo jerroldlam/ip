@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import static function.CommandParser.userEnteredBye;
+import static function.CommandParser.userEnteredDone;
+import static function.CommandParser.userEnteredList;
 import static function.UserGreeter.showWelcomeMessage;
 import static function.UserGreeter.showExitMessage;
 import function.TaskList;
@@ -13,11 +16,11 @@ public class Duke {
 
         while (true) {
             userInput = in.nextLine();
-            if (userInput.equalsIgnoreCase("bye")) {
+            if (userEnteredBye(userInput)) {
                 break;
-            } else if (userInput.equalsIgnoreCase("list")) {
+            } else if (userEnteredList(userInput)) {
                 userTaskList.printTaskList();
-            } else if (userInput.toLowerCase().contains("done")) {
+            } else if (userEnteredDone(userInput)) {
                 userTaskList.setTaskComplete(userInput);
             } else {
                 userTaskList.addTask(userInput);
