@@ -18,9 +18,7 @@ public class Deadline extends Task {
     }
 
     @Override
-    public void printTask() {
-        System.out.print(DEADLINE_SYMBOL);
-        super.printTask();
-        System.out.print("(by: " + getDeadlineBy() + ")" + "\n");
+    public String toString() {
+        return DEADLINE_SYMBOL + super.toString() + "(by: " + getDeadlineBy() + ")";
     }
 }

@@ -36,7 +36,8 @@ public class Task {
         }
     }
 
-    public void printTask() {
-        System.out.print(getDoneSymbol() + this.getTaskName());
+    @Override
+    public String toString() {
+        return getDoneSymbol() + " " +  getTaskName();
     }
 }

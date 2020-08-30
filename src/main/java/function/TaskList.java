@@ -69,7 +69,7 @@ public class TaskList {
         for (int listIndex = 1; listIndex <= taskArrayList.size(); listIndex++) {
             Task currentTask = taskArrayList.get(listIndex - 1);
             System.out.print(listIndex + ". ");
-            currentTask.printTask();
+            System.out.println(currentTask.toString());
         }
     }
 
@@ -140,8 +140,8 @@ public class TaskList {
      */
     public void printAddTaskSuccessfully(Task newEntry) {
         setTotalNumberOfTasks(getTotalNumberOfTasks()+1);
-        System.out.println("New task added: \n\t");
-        newEntry.printTask();
+        System.out.println("New task added:");
+        System.out.println("\t" + newEntry.toString());
         System.out.println("I'll keep track of it for you!");
     }
 
@@ -177,7 +177,7 @@ public class TaskList {
      */
     public void printCompleteTaskSuccessfully(Task currentTask) {
         System.out.println(COMPLETE_TASK_MESSAGE);
-        currentTask.printTask();
+        System.out.println("\t" + currentTask.toString());
     }
 
     /**

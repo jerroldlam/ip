@@ -8,9 +8,7 @@ public class ToDo extends Task {
     }
 
     @Override
-    public void printTask() {
-        System.out.print(TODO_SYMBOL);
-        super.printTask();
-        System.out.print("\n");
+    public String toString() {
+        return TODO_SYMBOL + super.toString();
     }
 }

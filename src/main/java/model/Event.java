@@ -18,9 +18,7 @@ public class Event extends Task {
     }
 
     @Override
-    public void printTask() {
-        System.out.print(EVENT_SYMBOL);
-        super.printTask();
-        System.out.print("(at: " + getPeriod() + ")" +"\n");
+    public String toString() {
+        return EVENT_SYMBOL + super.toString() + "(at: " + getPeriod() + ")";
     }
 }
