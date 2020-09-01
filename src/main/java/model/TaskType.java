@@ -1,5 +1,5 @@
 package model;
 
 public enum TaskType {
-    TODO,DEADLINE,EVENT,TASK
+    TODO,DEADLINE,EVENT
 }

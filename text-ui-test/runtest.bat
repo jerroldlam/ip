@@ -8,6 +8,7 @@ del ACTUAL.TXT
 
 REM compile the code into the bin folder
 javac  -cp ..\bin -Xlint:none -d ..\bin ..\src\main\java\function\UserGreeter.java
+javac  -cp ..\bin -Xlint:none -d ..\bin ..\src\main\java\function\CommandParser.java
 javac  -cp ..\bin -Xlint:none -d ..\bin ..\src\main\java\model\TaskType.java
 javac  -cp ..\bin -Xlint:none -d ..\bin ..\src\main\java\model\Task.java
 javac  -cp ..\bin -Xlint:none -d ..\bin ..\src\main\java\model\ToDo.java

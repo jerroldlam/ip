@@ -18,6 +18,11 @@ then
     echo "********** BUILD FAILURE **********"
     exit 1
 fi
+if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/function/CommandParser.java
+then
+    echo "********** BUILD FAILURE **********"
+    exit 1
+fi
 if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/TaskType.java
 then
     echo "********** BUILD FAILURE **********"
