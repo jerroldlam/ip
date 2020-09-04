@@ -27,9 +27,7 @@ You have 3 tasks on your list!
 You have completed 0 of them.
 Hope you are on target!
 1. [T][✗]  buy bread
-----------------------------------------------------
 2. [D][✗]  return book (by: Sunday)
-----------------------------------------------------
 3. [E][✗]  project meeting (at: Mon 2-4pm)
 ----------------------------------------------------
 ----------------------------------------------------
@@ -42,9 +40,7 @@ You have 3 tasks on your list!
 You have completed 1 of them.
 Hope you are on target!
 1. [T][✗]  buy bread
-----------------------------------------------------
 2. [D][✓]  return book (by: Sunday)
-----------------------------------------------------
 3. [E][✗]  project meeting (at: Mon 2-4pm)
 ----------------------------------------------------
 ----------------------------------------------------

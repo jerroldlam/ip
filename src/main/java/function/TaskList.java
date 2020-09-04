@@ -71,8 +71,8 @@ public class TaskList {
             Task currentTask = taskArrayList.get(listIndex - 1);
             System.out.print(listIndex + ". ");
             System.out.println(currentTask.toString());
-            System.out.println(DIVIDER_LINE);
         }
+        System.out.println(DIVIDER_LINE);
     }
 
     /**
