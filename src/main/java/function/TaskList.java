@@ -14,6 +14,7 @@ public class TaskList {
     private final String ERROR_NO_SUCH_TASK = "There's no such task to finish! Check your list!";
     private final String ERROR_NO_INTEGER_DONE = "Please put an integer after done.";
     private final String COMPLETE_TASK_MESSAGE = "Oh jolly! You finally completed this:";
+    private final String DIVIDER_LINE = "----------------------------------------------------";
     private final ArrayList<Task> taskArrayList = new ArrayList<>();
     private int totalNumberOfTasks;
     private int numberOfCompletedTasks;
@@ -70,6 +71,7 @@ public class TaskList {
             Task currentTask = taskArrayList.get(listIndex - 1);
             System.out.print(listIndex + ". ");
             System.out.println(currentTask.toString());
+            System.out.println(DIVIDER_LINE);
         }
     }
 
@@ -77,6 +79,7 @@ public class TaskList {
      * Prints header of the task list with total number of tasks and number of completed tasks.
      */
     public void printTaskListHeader() {
+        System.out.println(DIVIDER_LINE);
         System.out.println("Here is your current task list!");
         System.out.println("You have " + getTotalNumberOfTasks() + " task"
                 + ((getTotalNumberOfTasks()>1)? "s" :"") + " on your list!");
@@ -92,34 +95,39 @@ public class TaskList {
      * @param userInput name of new task.
      */
     public void addTask(String userInput) {
-        TaskType newTaskType = getInputTaskType(userInput);
-        Task newEntry;
+        try {
+            TaskType newTaskType = getInputTaskType(userInput);
+            Task newEntry;
 
-        if (taskTypeIsValid(newTaskType)) {
-            switch (newTaskType) {
-            case EVENT:
-                String eventName = getInputTaskName(userInput);
-                String period = getInputDetails(userInput);
-                newEntry = new Event(eventName, period);
-                break;
-            case DEADLINE:
-                String deadlineName = getInputTaskName(userInput);
-                String deadlineBy = getInputDetails(userInput);
-                newEntry = new Deadline(deadlineName, deadlineBy);
-                break;
-            case TODO:
-                int nameStartPoint = userInput.indexOf(" ");
-                String toDoName = userInput.substring(nameStartPoint);
-                newEntry = new ToDo(toDoName);
-                break;
-            default:
+            if (taskTypeIsValid(newTaskType)) {
+                switch (newTaskType) {
+                case EVENT:
+                    String eventName = getInputTaskName(userInput);
+                    String period = getInputDetails(userInput);
+                    newEntry = new Event(eventName, period);
+                    break;
+                case DEADLINE:
+                    String deadlineName = getInputTaskName(userInput);
+                    String deadlineBy = getInputDetails(userInput);
+                    newEntry = new Deadline(deadlineName, deadlineBy);
+                    break;
+                case TODO:
+                    int nameStartPoint = userInput.indexOf(" ");
+                    String toDoName = userInput.substring(nameStartPoint);
+                    newEntry = new ToDo(toDoName);
+                    break;
+                default:
+                    printErrorMessage(ERROR_ADDING_TASK);
+                    return;
+                }
+                taskArrayList.add(newEntry);
+                printAddTaskSuccessfully(newEntry);
+            } else {
                 printErrorMessage(ERROR_ADDING_TASK);
-                return;
             }
-            taskArrayList.add(newEntry);
-            printAddTaskSuccessfully(newEntry);
-        } else {
-                printErrorMessage(ERROR_ADDING_TASK);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("The description cannot be empty!");
+            System.out.println(DIVIDER_LINE);
         }
     }
 
@@ -139,10 +147,12 @@ public class TaskList {
      * @param newEntry object of Task or its subclasses.
      */
     public void printAddTaskSuccessfully(Task newEntry) {
+        System.out.println(DIVIDER_LINE);
         setTotalNumberOfTasks(getTotalNumberOfTasks()+1);
         System.out.println("New task added:");
         System.out.println("\t" + newEntry.toString());
         System.out.println("I'll keep track of it for you!");
+        System.out.println(DIVIDER_LINE);
     }
 
     /**
@@ -156,16 +166,14 @@ public class TaskList {
         String userInputNumber = userInput.substring(userInput.indexOf(" ") + 1);
         try {
             int taskNumberCompleted = Integer.parseInt(userInputNumber);
-            try {
-                Task currentTask = taskArrayList.get(taskNumberCompleted - 1);
-                currentTask.setTaskDone(true);
-                setNumberOfCompleteTasks(getNumberOfCompleteTasks() + 1);
-                printCompleteTaskSuccessfully(currentTask);
-            } catch (Exception noSuchTaskException) {
-                printErrorMessage(ERROR_NO_SUCH_TASK);
-            }
-        } catch (Exception notAnIntegerException) {
+            Task currentTask = taskArrayList.get(taskNumberCompleted - 1);
+            currentTask.setTaskDone(true);
+            setNumberOfCompleteTasks(getNumberOfCompleteTasks() + 1);
+            printCompleteTaskSuccessfully(currentTask);
+        } catch (NumberFormatException e) {
             printErrorMessage(ERROR_NO_INTEGER_DONE);
+        } catch (IndexOutOfBoundsException e) {
+            printErrorMessage(ERROR_NO_SUCH_TASK);
         }
     }
 
@@ -176,8 +184,10 @@ public class TaskList {
      * @param currentTask Task that was completed
      */
     public void printCompleteTaskSuccessfully(Task currentTask) {
+        System.out.println(DIVIDER_LINE);
         System.out.println(COMPLETE_TASK_MESSAGE);
         System.out.println("\t" + currentTask.toString());
+        System.out.println(DIVIDER_LINE);
     }
 
     /**
