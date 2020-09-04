@@ -13,42 +13,7 @@ then
 fi
 
 # compile the code into the bin folder, terminates if error occurred
-if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/function/UserGreeter.java
-then
-    echo "********** BUILD FAILURE **********"
-    exit 1
-fi
-if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/function/CommandParser.java
-then
-    echo "********** BUILD FAILURE **********"
-    exit 1
-fi
-if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/TaskType.java
-then
-    echo "********** BUILD FAILURE **********"
-    exit 1
-fi
-if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/Task.java
-then
-    echo "********** BUILD FAILURE **********"
-    exit 1
-fi
-if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/ToDo.java
-then
-    echo "********** BUILD FAILURE **********"
-    exit 1
-fi
-if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/Deadline.java
-then
-    echo "********** BUILD FAILURE **********"
-    exit 1
-fi
-if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/model/Event.java
-then
-    echo "********** BUILD FAILURE **********"
-    exit 1
-fi
-if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/function/TaskList.java
+if ! javac  -cp ../bin -Xlint:none -d ../bin ../src/main/java/duke/*.java ../src/main/java/duke/function/*.java ../src/main/java/duke/model/*.java
 then
     echo "********** BUILD FAILURE **********"
     exit 1

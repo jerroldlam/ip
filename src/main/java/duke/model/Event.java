@@ -1,4 +1,4 @@
-package model;
+package duke.model;
 
 public class Event extends Task {
     private final String EVENT_SYMBOL = "[E]";

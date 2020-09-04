@@ -1,4 +1,4 @@
-package function;
+package duke.function;
 
 public class CommandParser {
     private static final String BYE_COMMAND = "bye";

@@ -1,10 +1,12 @@
+package duke;
+
 import java.util.Scanner;
-import static function.CommandParser.userEnteredBye;
-import static function.CommandParser.userEnteredDone;
-import static function.CommandParser.userEnteredList;
-import static function.UserGreeter.showWelcomeMessage;
-import static function.UserGreeter.showExitMessage;
-import function.TaskList;
+import static duke.function.CommandParser.userEnteredBye;
+import static duke.function.CommandParser.userEnteredDone;
+import static duke.function.CommandParser.userEnteredList;
+import static duke.function.UserGreeter.showWelcomeMessage;
+import static duke.function.UserGreeter.showExitMessage;
+import duke.function.TaskList;
 
 public class Duke {
     public static void main(String[] args) {

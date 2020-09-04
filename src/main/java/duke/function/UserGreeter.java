@@ -1,4 +1,4 @@
-package function;
+package duke.function;
 
 public class UserGreeter {
 
@@ -6,7 +6,7 @@ public class UserGreeter {
      * Prints welcome message for User during entry.
      */
     public static void showWelcomeMessage() {
-        System.out.println("--------------------Waking Cid up-------------------");
+        System.out.println("--------------------Waking Duke up-------------------");
         System.out.println("Hello...");
         System.out.println("You have woken me up...");
         System.out.println("What can I do for you?");
@@ -20,7 +20,7 @@ public class UserGreeter {
         System.out.println("----------------------------------------------------");
         System.out.println("Bye.");
         System.out.println("I'm going back to sleep.");
-        System.out.println("------------Cid has gone back to sleep--------------");
+        System.out.println("------------Duke has gone back to sleep--------------");
     }
 
     /**

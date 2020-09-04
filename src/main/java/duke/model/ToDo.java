@@ -1,4 +1,4 @@
-package model;
+package duke.model;
 
 public class ToDo extends Task {
     private final String TODO_SYMBOL = "[T]";

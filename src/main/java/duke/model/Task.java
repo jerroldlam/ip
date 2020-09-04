@@ -1,4 +1,4 @@
-package model;
+package duke.model;
 
 public class Task {
     private final String DONE_SYMBOL = "[✓]";

@@ -1,19 +1,22 @@
-package function;
+package duke.function;
 
 import java.util.ArrayList;
-import model.Deadline;
-import model.Event;
-import model.Task;
-import model.TaskType;
-import model.ToDo;
-import static function.UserGreeter.printErrorMessage;
+import duke.model.Deadline;
+import duke.model.Event;
+import duke.model.Task;
+import duke.model.TaskType;
+import duke.model.ToDo;
+import static duke.function.UserGreeter.printErrorMessage;
 
 public class TaskList {
     private final String ERROR_NO_TASK = "You have no tasks yet!";
     private final String ERROR_ADDING_TASK = "Error adding task. I only have todo, deadline and event.";
     private final String ERROR_NO_SUCH_TASK = "There's no such task to finish! Check your list!";
     private final String ERROR_NO_INTEGER_DONE = "Please put an integer after done.";
+    private final String ERROR_NO_DETAILS = "The details entered are wrong!";
     private final String COMPLETE_TASK_MESSAGE = "Oh jolly! You finally completed this:";
+    private final String EVENT_MARKER = "/at";
+    private final String DEADLINE_MARKER = "/by";
     private final String DIVIDER_LINE = "----------------------------------------------------";
     private final ArrayList<Task> taskArrayList = new ArrayList<>();
     private int totalNumberOfTasks;
@@ -103,12 +106,12 @@ public class TaskList {
                 switch (newTaskType) {
                 case EVENT:
                     String eventName = getInputTaskName(userInput);
-                    String period = getInputDetails(userInput);
+                    String period = getInputDetails(userInput,EVENT_MARKER);
                     newEntry = new Event(eventName, period);
                     break;
                 case DEADLINE:
                     String deadlineName = getInputTaskName(userInput);
-                    String deadlineBy = getInputDetails(userInput);
+                    String deadlineBy = getInputDetails(userInput,DEADLINE_MARKER);
                     newEntry = new Deadline(deadlineName, deadlineBy);
                     break;
                 case TODO:
@@ -126,8 +129,7 @@ public class TaskList {
                 printErrorMessage(ERROR_ADDING_TASK);
             }
         } catch (StringIndexOutOfBoundsException e) {
-            System.out.println("The description cannot be empty!");
-            System.out.println(DIVIDER_LINE);
+            printErrorMessage(ERROR_NO_DETAILS);
         }
     }
 
@@ -246,8 +248,8 @@ public class TaskList {
      * @param userInput user's input
      * @return String details - details of task to be attached
      */
-    public String getInputDetails (String userInput) {
-        int nameEndPoint = userInput.indexOf("/");
+    public String getInputDetails (String userInput, String splitter) {
+        int nameEndPoint = userInput.indexOf(splitter);
         String roughDetails = userInput.substring(nameEndPoint);
         int detailStartPoint = roughDetails.indexOf(" ") + 1;
         return roughDetails.substring(detailStartPoint);

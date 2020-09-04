@@ -1,4 +1,4 @@
-package model;
+package duke.model;
 
 public class Deadline extends Task {
     private final String DEADLINE_SYMBOL = "[D]";
