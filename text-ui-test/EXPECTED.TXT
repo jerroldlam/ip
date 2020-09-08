@@ -1,4 +1,4 @@
---------------------Waking Cid up-------------------
+--------------------Waking Duke up-------------------
 Hello...
 You have woken me up...
 What can I do for you?
@@ -46,4 +46,4 @@ Hope you are on target!
 ----------------------------------------------------
 Bye.
 I'm going back to sleep.
-------------Cid has gone back to sleep--------------
+------------Duke has gone back to sleep--------------
