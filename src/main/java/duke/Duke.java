@@ -4,6 +4,7 @@ import java.util.Scanner;
 import static duke.function.CommandParser.userEnteredBye;
 import static duke.function.CommandParser.userEnteredDone;
 import static duke.function.CommandParser.userEnteredList;
+import static duke.function.CommandParser.userEnteredDelete;
 import static duke.function.UserGreeter.showWelcomeMessage;
 import static duke.function.UserGreeter.showExitMessage;
 import duke.function.TaskList;
@@ -24,6 +25,8 @@ public class Duke {
                 userTaskList.printTaskList();
             } else if (userEnteredDone(userInput)) {
                 userTaskList.setTaskComplete(userInput);
+            } else if (userEnteredDelete(userInput)) {
+                userTaskList.deleteTask(userInput);
             } else {
                 userTaskList.addTask(userInput);
             }

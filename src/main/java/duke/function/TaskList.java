@@ -15,6 +15,7 @@ public class TaskList {
     private final String ERROR_NO_INTEGER_DONE = "Please put an integer after done.";
     private final String ERROR_NO_DETAILS = "The details entered are wrong!";
     private final String COMPLETE_TASK_MESSAGE = "Oh jolly! You finally completed this:";
+    private final String DELETE_TASK_MESSAGE = "OK! I have removed this task for you:";
     private final String EVENT_MARKER = "/at";
     private final String DEADLINE_MARKER = "/by";
     private final String DIVIDER_LINE = "----------------------------------------------------";
@@ -253,5 +254,32 @@ public class TaskList {
         String roughDetails = userInput.substring(nameEndPoint);
         int detailStartPoint = roughDetails.indexOf(" ") + 1;
         return roughDetails.substring(detailStartPoint);
+    }
+
+    public void deleteTask (String userInput) {
+        String userInputNumber = userInput.substring(userInput.indexOf(" ") + 1);
+        try {
+            int taskNumberToRemove = Integer.parseInt(userInputNumber);
+            Task taskToDelete = taskArrayList.get(taskNumberToRemove);
+            taskArrayList.remove(taskNumberToRemove);
+            if (taskToDelete.isTaskDone()) {
+                setNumberOfCompleteTasks(getNumberOfCompleteTasks() - 1);
+            }
+            setTotalNumberOfTasks(getTotalNumberOfTasks() - 1);
+            printDeleteTaskSuccessfully(taskToDelete);
+        } catch (NumberFormatException e) {
+            printErrorMessage(ERROR_NO_INTEGER_DONE);
+        } catch (IndexOutOfBoundsException e) {
+            printErrorMessage(ERROR_NO_SUCH_TASK);
+        }
+    }
+
+    public void printDeleteTaskSuccessfully(Task taskToDelete) {
+        System.out.println(DIVIDER_LINE);
+        System.out.println(DELETE_TASK_MESSAGE);
+        System.out.println("\t" + taskToDelete.toString());
+        System.out.println("You have " + getTotalNumberOfTasks() + " task"
+                + ((getTotalNumberOfTasks()>1)? "s" :"") + " on your list!");
+        System.out.println(DIVIDER_LINE);
     }
 }
