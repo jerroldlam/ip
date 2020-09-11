@@ -292,6 +292,7 @@ public class TaskList {
     public void saveTaskList() {
         try {
             textFile.saveAsTextFile(taskArrayList);
+            System.out.println("Task list saved successfully as " + textFile.getFileName());
         } catch (IOException e) {
             printErrorMessage("ERROR SAVING TASKS");
         }

@@ -3,22 +3,26 @@ Hello...
 You have woken me up...
 What can I do for you?
 ----------------------------------------------------
+Loading Text File........
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+tasklist.txt does not exist!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 You have no tasks yet!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ----------------------------------------------------
 New task added:
-	[T][✗]  buy bread
+	[T][✗] buy bread
 I'll keep track of it for you!
 ----------------------------------------------------
 ----------------------------------------------------
 New task added:
-	[D][✗]  return book (by: Sunday)
+	[D][✗] return book (by: Sunday)
 I'll keep track of it for you!
 ----------------------------------------------------
 ----------------------------------------------------
 New task added:
-	[E][✗]  project meeting (at: Mon 2-4pm)
+	[E][✗] project meeting (at: Mon 2-4pm)
 I'll keep track of it for you!
 ----------------------------------------------------
 ----------------------------------------------------
@@ -26,23 +30,24 @@ Here is your current task list!
 You have 3 tasks on your list!
 You have completed 0 of them.
 Hope you are on target!
-1. [T][✗]  buy bread
-2. [D][✗]  return book (by: Sunday)
-3. [E][✗]  project meeting (at: Mon 2-4pm)
+1. [T][✗] buy bread
+2. [D][✗] return book (by: Sunday)
+3. [E][✗] project meeting (at: Mon 2-4pm)
 ----------------------------------------------------
 ----------------------------------------------------
 Oh jolly! You finally completed this:
-	[D][✓]  return book (by: Sunday)
+	[D][✓] return book (by: Sunday)
 ----------------------------------------------------
 ----------------------------------------------------
 Here is your current task list!
 You have 3 tasks on your list!
 You have completed 1 of them.
 Hope you are on target!
-1. [T][✗]  buy bread
-2. [D][✓]  return book (by: Sunday)
-3. [E][✗]  project meeting (at: Mon 2-4pm)
+1. [T][✗] buy bread
+2. [D][✓] return book (by: Sunday)
+3. [E][✗] project meeting (at: Mon 2-4pm)
 ----------------------------------------------------
+Task list saved successfully as tasklist.txt
 ----------------------------------------------------
 Bye.
 I'm going back to sleep.
