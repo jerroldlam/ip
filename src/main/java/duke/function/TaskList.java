@@ -262,9 +262,11 @@ public class TaskList {
             int taskNumberToRemove = Integer.parseInt(userInputNumber);
             Task taskToDelete = taskArrayList.get(taskNumberToRemove);
             taskArrayList.remove(taskNumberToRemove);
+
             if (taskToDelete.isTaskDone()) {
                 setNumberOfCompleteTasks(getNumberOfCompleteTasks() - 1);
             }
+
             setTotalNumberOfTasks(getTotalNumberOfTasks() - 1);
             printDeleteTaskSuccessfully(taskToDelete);
         } catch (NumberFormatException e) {
