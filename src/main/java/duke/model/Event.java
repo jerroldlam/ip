@@ -18,7 +18,22 @@ public class Event extends Task {
     }
 
     @Override
+    public String getTaskSymbol() {
+        return EVENT_SYMBOL;
+    }
+
+    @Override
+    public TaskType getTaskType() {
+        return TaskType.EVENT;
+    }
+
+    @Override
+    public String getDetails() {
+        return getPeriod();
+    }
+
+    @Override
     public String toString() {
-        return EVENT_SYMBOL + super.toString() + "(at: " + getPeriod() + ")";
+        return EVENT_SYMBOL + super.toString() + " (at: " + getPeriod() + ")";
     }
 }

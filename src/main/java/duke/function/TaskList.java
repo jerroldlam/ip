@@ -1,5 +1,7 @@
 package duke.function;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import duke.model.Deadline;
 import duke.model.Event;
@@ -19,7 +21,8 @@ public class TaskList {
     private final String EVENT_MARKER = "/at";
     private final String DEADLINE_MARKER = "/by";
     private final String DIVIDER_LINE = "----------------------------------------------------";
-    private final ArrayList<Task> taskArrayList = new ArrayList<>();
+    private ArrayList<Task> taskArrayList;
+    private FileIO textFile = new FileIO("tasklist.txt");
     private int totalNumberOfTasks;
     private int numberOfCompletedTasks;
 
@@ -116,7 +119,7 @@ public class TaskList {
                     newEntry = new Deadline(deadlineName, deadlineBy);
                     break;
                 case TODO:
-                    int nameStartPoint = userInput.indexOf(" ");
+                    int nameStartPoint = userInput.indexOf(" ") + 1;
                     String toDoName = userInput.substring(nameStartPoint);
                     newEntry = new ToDo(toDoName);
                     break;
@@ -238,8 +241,8 @@ public class TaskList {
      * @return String taskName - name of task
      */
     public String getInputTaskName (String userInput) {
-        int nameStartPoint = userInput.indexOf(" ");
-        int nameEndPoint = userInput.indexOf("/");
+        int nameStartPoint = userInput.indexOf(" ") + 1;
+        int nameEndPoint = userInput.indexOf("/") - 1;
         return userInput.substring(nameStartPoint,nameEndPoint);
     }
 
@@ -255,6 +258,7 @@ public class TaskList {
         int detailStartPoint = roughDetails.indexOf(" ") + 1;
         return roughDetails.substring(detailStartPoint);
     }
+
 
     public void deleteTask (String userInput) {
         String userInputNumber = userInput.substring(userInput.indexOf(" ") + 1);
@@ -281,7 +285,26 @@ public class TaskList {
         System.out.println(DELETE_TASK_MESSAGE);
         System.out.println("\t" + taskToDelete.toString());
         System.out.println("You have " + getTotalNumberOfTasks() + " task"
-                + ((getTotalNumberOfTasks()>1)? "s" :"") + " on your list!");
+                + ((getTotalNumberOfTasks() > 1) ? "s" : "") + " on your list!");
         System.out.println(DIVIDER_LINE);
+    }
+
+    public void saveTaskList() {
+        try {
+            textFile.saveAsTextFile(taskArrayList);
+        } catch (IOException e) {
+            printErrorMessage("ERROR SAVING TASKS");
+        }
+    }
+
+    public void loadTaskList() {
+        try {
+            System.out.println("Loading Text File........");
+            taskArrayList = textFile.loadTextFile();
+            System.out.println("Loaded Tasks Successfully");
+        } catch (FileNotFoundException e){
+            printErrorMessage(textFile.getFileName() + " does not exist!");
+            taskArrayList = new ArrayList<>();
+        }
     }
 }
