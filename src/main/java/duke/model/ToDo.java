@@ -8,6 +8,21 @@ public class ToDo extends Task {
     }
 
     @Override
+    public String getTaskSymbol() {
+        return TODO_SYMBOL;
+    }
+
+    @Override
+    public TaskType getTaskType() {
+        return TaskType.TODO;
+    }
+
+    @Override
+    public String getDetails() {
+        return "";
+    }
+
+    @Override
     public String toString() {
         return TODO_SYMBOL + super.toString();
     }

@@ -18,7 +18,22 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String getTaskSymbol() {
+        return DEADLINE_SYMBOL;
+    }
+
+    @Override
+    public TaskType getTaskType() {
+        return TaskType.DEADLINE;
+    }
+
+    @Override
+    public String getDetails() {
+        return getDeadlineBy();
+    }
+
+    @Override
     public String toString() {
-        return DEADLINE_SYMBOL + super.toString() + "(by: " + getDeadlineBy() + ")";
+        return DEADLINE_SYMBOL + super.toString() + " (by: " + getDeadlineBy() + ")";
     }
 }

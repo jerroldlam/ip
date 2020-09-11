@@ -15,6 +15,7 @@ public class Duke {
         String userInput;
         
         showWelcomeMessage();
+        userTaskList.loadTaskList();
 
         while (true) {
             userInput = in.nextLine();
@@ -28,6 +29,7 @@ public class Duke {
                 userTaskList.addTask(userInput);
             }
         }
+        userTaskList.saveTaskList();
         showExitMessage();
     }
 }
