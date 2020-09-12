@@ -89,7 +89,7 @@ public class TaskList {
         System.out.println(DIVIDER_LINE);
         System.out.println("Here is your current task list!");
         System.out.println("You have " + getTotalNumberOfTasks() + " task"
-                + ((getTotalNumberOfTasks()>1)? "s" :"") + " on your list!");
+                + ((getTotalNumberOfTasks()>1)? "s" : "") + " on your list!");
         System.out.println("You have completed " + getNumberOfCompleteTasks() +" of them.");
         System.out.println("Hope you are on target!");
     }
@@ -259,7 +259,11 @@ public class TaskList {
         return roughDetails.substring(detailStartPoint);
     }
 
-
+    /**
+     * Deletes a task of the user's input
+     *
+     * @param userInput input of user
+     */
     public void deleteTask (String userInput) {
         String userInputNumber = userInput.substring(userInput.indexOf(" ") + 1);
         try {
@@ -280,6 +284,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Acknowledges successful deletion of task by echoing task deleted
+     *
+     * @param taskToDelete task that was deleted
+     */
     public void printDeleteTaskSuccessfully(Task taskToDelete) {
         System.out.println(DIVIDER_LINE);
         System.out.println(DELETE_TASK_MESSAGE);
@@ -289,23 +298,75 @@ public class TaskList {
         System.out.println(DIVIDER_LINE);
     }
 
+    /**
+     * Saves current task list into text file
+     */
     public void saveTaskList() {
         try {
             textFile.saveAsTextFile(taskArrayList);
-            System.out.println("Task list saved successfully as " + textFile.getFileName());
+            printSaveTextFileSuccessfully();
         } catch (IOException e) {
             printErrorMessage("ERROR SAVING TASKS");
         }
     }
 
+    /**
+     * Loads tasklist from text file
+     */
     public void loadTaskList() {
         try {
             System.out.println("Loading Text File........");
             taskArrayList = textFile.loadTextFile();
-            System.out.println("Loaded Tasks Successfully");
+            printLoadTextFileSuccessfully();
+            populateTaskListStatistics();
         } catch (FileNotFoundException e){
             printErrorMessage(textFile.getFileName() + " does not exist!");
             taskArrayList = new ArrayList<>();
         }
+    }
+
+    /**
+     * Iterates through the task list and populates total number of tasks
+     * and number of completed tasks
+     */
+    public void populateTaskListStatistics() {
+        int[] taskListStatistics;
+        taskListStatistics = getTaskListStatistics(taskArrayList);
+        setTotalNumberOfTasks(taskListStatistics[0]);
+        setNumberOfCompleteTasks(taskListStatistics[1]);
+    }
+
+    /**
+     * Computes total number of tasks and total number of completed tasks
+     *
+     * @param taskArrayList ArrayList of tasks to be computed
+     * @return Integer array where index 0 represents total task count
+     *          and index 1 represents completed task count
+     */
+    public int[] getTaskListStatistics (ArrayList<Task> taskArrayList) {
+        int[] result = {0,0};
+        for (Task t : taskArrayList) {
+            result[0] += 1;
+            if (t.isTaskDone()) {
+                result[1] += 1;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Acknowledges successful saving of text file
+     */
+    public void printSaveTextFileSuccessfully () {
+        System.out.println(DIVIDER_LINE);
+        System.out.println("Task list saved successfully as " + textFile.getFileName());
+    }
+
+    /**
+     * Acknowledges successful loading of text file
+     */
+    public void printLoadTextFileSuccessfully () {
+        System.out.println("Loaded Tasks Successfully from " + textFile.getFileName());
+        System.out.println(DIVIDER_LINE);
     }
 }
