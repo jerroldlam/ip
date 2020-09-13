@@ -268,8 +268,8 @@ public class TaskList {
         String userInputNumber = userInput.substring(userInput.indexOf(" ") + 1);
         try {
             int taskNumberToRemove = Integer.parseInt(userInputNumber);
-            Task taskToDelete = taskArrayList.get(taskNumberToRemove);
-            taskArrayList.remove(taskNumberToRemove);
+            Task taskToDelete = taskArrayList.get(taskNumberToRemove - 1);
+            taskArrayList.remove(taskNumberToRemove - 1);
 
             if (taskToDelete.isTaskDone()) {
                 setNumberOfCompleteTasks(getNumberOfCompleteTasks() - 1);
