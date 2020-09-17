@@ -4,6 +4,7 @@ import java.util.Scanner;
 import static duke.function.CommandParser.userEnteredBye;
 import static duke.function.CommandParser.userEnteredDone;
 import static duke.function.CommandParser.userEnteredList;
+import static duke.function.CommandParser.userEnteredFind;
 import static duke.function.CommandParser.userEnteredDelete;
 import static duke.function.Ui.showWelcomeMessage;
 import static duke.function.Ui.showExitMessage;
@@ -28,6 +29,8 @@ public class Duke {
                 userTaskList.setTaskComplete(userInput);
             } else if (userEnteredDelete(userInput)) {
                 userTaskList.deleteTask(userInput);
+            } else if (userEnteredFind(userInput)) {
+                userTaskList.findTask(userInput);
             } else {
                 userTaskList.addTask(userInput);
             }

@@ -65,7 +65,7 @@ public class TaskList {
      * @param taskArrayList ArrayList of user's tasks
      * @return boolean of whether it is not empty
      */
-    public boolean taskListNotEmpty (ArrayList<Task> taskArrayList) {
+    private boolean taskListNotEmpty (ArrayList<Task> taskArrayList) {
         return !(taskArrayList.isEmpty());
     }
 
@@ -73,7 +73,7 @@ public class TaskList {
      * Prints the content of the task list with respective list index, task symbol, done symbol
      * and description.
      */
-    public void printTaskListBody() {
+    private void printTaskListBody() {
         for (int listIndex = 1; listIndex <= taskArrayList.size(); listIndex++) {
             Task currentTask = taskArrayList.get(listIndex - 1);
             System.out.print(listIndex + ". ");
@@ -85,7 +85,7 @@ public class TaskList {
     /**
      * Prints header of the task list with total number of tasks and number of completed tasks.
      */
-    public void printTaskListHeader() {
+    private void printTaskListHeader() {
         System.out.println(DIVIDER_LINE);
         System.out.println("Here is your current task list!");
         System.out.println("You have " + getTotalNumberOfTasks() + " task"
@@ -143,7 +143,7 @@ public class TaskList {
      * @param type type to be checked
      * @return boolean of validity
      */
-    public boolean taskTypeIsValid (TaskType type) {
+    private boolean taskTypeIsValid (TaskType type) {
         return !(type == null);
     }
 
@@ -152,7 +152,7 @@ public class TaskList {
      *
      * @param newEntry object of Task or its subclasses.
      */
-    public void printAddTaskSuccessfully(Task newEntry) {
+    private void printAddTaskSuccessfully(Task newEntry) {
         System.out.println(DIVIDER_LINE);
         setTotalNumberOfTasks(getTotalNumberOfTasks()+1);
         System.out.println("New task added:");
@@ -189,7 +189,7 @@ public class TaskList {
      *
      * @param currentTask Task that was completed
      */
-    public void printCompleteTaskSuccessfully(Task currentTask) {
+    private void printCompleteTaskSuccessfully(Task currentTask) {
         System.out.println(DIVIDER_LINE);
         System.out.println(COMPLETE_TASK_MESSAGE);
         System.out.println("\t" + currentTask.toString());
@@ -204,7 +204,7 @@ public class TaskList {
      * @param userInput of one word from the user
      * @return TaskType of userInput
      */
-    public TaskType getTaskType (String userInput) {
+    private TaskType getTaskType (String userInput) {
         TaskType currentTaskType;
 
         switch (userInput.toUpperCase()) {
@@ -229,7 +229,7 @@ public class TaskList {
      * @param userInput of any length where the first word is the TaskType intended
      * @return TaskType of userInput
      */
-    public TaskType getInputTaskType (String userInput) {
+    private TaskType getInputTaskType (String userInput) {
         String[] inputTaskType = userInput.split(" ");
         return (getTaskType(inputTaskType[0]));
     }
@@ -240,7 +240,7 @@ public class TaskList {
      * @param userInput user's input
      * @return String taskName - name of task
      */
-    public String getInputTaskName (String userInput) {
+    private String getInputTaskName (String userInput) {
         int nameStartPoint = userInput.indexOf(" ") + 1;
         int nameEndPoint = userInput.indexOf("/") - 1;
         return userInput.substring(nameStartPoint,nameEndPoint);
@@ -252,7 +252,7 @@ public class TaskList {
      * @param userInput user's input
      * @return String details - details of task to be attached
      */
-    public String getInputDetails (String userInput, String splitter) {
+    private String getInputDetails (String userInput, String splitter) {
         int nameEndPoint = userInput.indexOf(splitter);
         String roughDetails = userInput.substring(nameEndPoint);
         int detailStartPoint = roughDetails.indexOf(" ") + 1;
@@ -289,7 +289,7 @@ public class TaskList {
      *
      * @param taskToDelete task that was deleted
      */
-    public void printDeleteTaskSuccessfully(Task taskToDelete) {
+    private void printDeleteTaskSuccessfully(Task taskToDelete) {
         System.out.println(DIVIDER_LINE);
         System.out.println(DELETE_TASK_MESSAGE);
         System.out.println("\t" + taskToDelete.toString());
@@ -329,7 +329,7 @@ public class TaskList {
      * Iterates through the task list and populates total number of tasks
      * and number of completed tasks
      */
-    public void populateTaskListStatistics() {
+    private void populateTaskListStatistics() {
         int[] taskListStatistics;
         taskListStatistics = getTaskListStatistics(taskArrayList);
         setTotalNumberOfTasks(taskListStatistics[0]);
@@ -343,7 +343,7 @@ public class TaskList {
      * @return Integer array where index 0 represents total task count
      *          and index 1 represents completed task count
      */
-    public int[] getTaskListStatistics (ArrayList<Task> taskArrayList) {
+    private int[] getTaskListStatistics (ArrayList<Task> taskArrayList) {
         int[] result = {0,0};
         for (Task t : taskArrayList) {
             result[0] += 1;
@@ -357,7 +357,7 @@ public class TaskList {
     /**
      * Acknowledges successful saving of text file
      */
-    public void printSaveTextFileSuccessfully () {
+    private void printSaveTextFileSuccessfully () {
         System.out.println(DIVIDER_LINE);
         System.out.println("Task list saved successfully as " + textFile.getFileName());
     }
@@ -365,8 +365,29 @@ public class TaskList {
     /**
      * Acknowledges successful loading of text file
      */
-    public void printLoadTextFileSuccessfully () {
+    private void printLoadTextFileSuccessfully () {
         System.out.println("Loaded Tasks Successfully from " + textFile.getFileName());
         System.out.println(DIVIDER_LINE);
+    }
+
+    public void findTask(String userInput) {
+        int taskNameStartPoint = userInput.indexOf(" ") + 1;
+        String taskName = userInput.substring(taskNameStartPoint);
+        System.out.println(DIVIDER_LINE);
+        System.out.println("Here are the matching tasks in your list:");
+        searchTaskList(taskName);
+        System.out.println(DIVIDER_LINE);
+    }
+
+    private void searchTaskList(String taskName) {
+        int numberOfMatchingTasks = 0;
+        for (int index = 0; index < taskArrayList.size(); index++) {
+            Task currentTask = taskArrayList.get(index);
+            if (currentTask.getTaskName().contains(taskName)) {
+                System.out.println( (index+1) + ". " + currentTask.toString());
+                numberOfMatchingTasks++;
+            }
+        }
+        System.out.println("There are " + numberOfMatchingTasks + " tasks that fit your search!");
     }
 }
