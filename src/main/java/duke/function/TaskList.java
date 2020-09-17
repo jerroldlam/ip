@@ -8,7 +8,7 @@ import duke.model.Event;
 import duke.model.Task;
 import duke.model.TaskType;
 import duke.model.ToDo;
-import static duke.function.UserGreeter.printErrorMessage;
+import static duke.function.Ui.printErrorMessage;
 
 public class TaskList {
     private final String ERROR_NO_TASK = "You have no tasks yet!";

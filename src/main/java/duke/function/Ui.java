@@ -1,6 +1,6 @@
 package duke.function;
 
-public class UserGreeter {
+public class Ui {
 
     /**
      * Prints welcome message for User during entry.

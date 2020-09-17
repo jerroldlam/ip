@@ -5,8 +5,8 @@ import static duke.function.CommandParser.userEnteredBye;
 import static duke.function.CommandParser.userEnteredDone;
 import static duke.function.CommandParser.userEnteredList;
 import static duke.function.CommandParser.userEnteredDelete;
-import static duke.function.UserGreeter.showWelcomeMessage;
-import static duke.function.UserGreeter.showExitMessage;
+import static duke.function.Ui.showWelcomeMessage;
+import static duke.function.Ui.showExitMessage;
 import duke.function.TaskList;
 
 public class Duke {
