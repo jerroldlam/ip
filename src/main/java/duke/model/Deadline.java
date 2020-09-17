@@ -1,19 +1,22 @@
 package duke.model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Deadline extends Task {
     private final String DEADLINE_SYMBOL = "[D]";
-    private String deadlineBy;
+    private LocalDate deadlineBy;
 
-    public Deadline(String taskName,String deadlineBy) {
+    public Deadline(String taskName,LocalDate deadlineBy) {
         super(taskName);
         setDeadlineBy(deadlineBy);
     }
 
-    public String getDeadlineBy() {
+    public LocalDate getDeadlineBy() {
         return deadlineBy;
     }
 
-    public void setDeadlineBy(String deadlineBy) {
+    public void setDeadlineBy(LocalDate deadlineBy) {
         this.deadlineBy = deadlineBy;
     }
 
@@ -29,7 +32,7 @@ public class Deadline extends Task {
 
     @Override
     public String getDetails() {
-        return getDeadlineBy();
+        return getDeadlineBy().toString();
     }
 
     @Override

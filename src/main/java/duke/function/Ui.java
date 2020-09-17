@@ -33,4 +33,14 @@ public class Ui {
         System.out.println(errorMessage);
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
+
+    public static void showHelpMessage() {
+        System.out.println("Here are some commands that Duke can understand:");
+        System.out.println("\tevent {event name} /at {timing}");
+        System.out.println("\ttodo {todo name}");
+        System.out.println("\tdeadline {deadline name} /by {date} ,date should be in YYYY-MM-DD format");
+        System.out.println("\tlist");
+        System.out.println("\tbye");
+        System.out.println("----------------------------------------------------");
+    }
 }

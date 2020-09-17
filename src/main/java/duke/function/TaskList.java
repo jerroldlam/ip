@@ -2,7 +2,9 @@ package duke.function;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.time.LocalDate;
 import duke.model.Deadline;
 import duke.model.Event;
 import duke.model.Task;
@@ -16,6 +18,7 @@ public class TaskList {
     private final String ERROR_NO_SUCH_TASK = "There's no such task to finish! Check your list!";
     private final String ERROR_NO_INTEGER_DONE = "Please put an integer after done.";
     private final String ERROR_NO_DETAILS = "The details entered are wrong!";
+    private final String ERROR_DATE_FORMAT = "The date format should be in YYYY-MM-DD, which are all integers.";
     private final String COMPLETE_TASK_MESSAGE = "Oh jolly! You finally completed this:";
     private final String DELETE_TASK_MESSAGE = "OK! I have removed this task for you:";
     private final String EVENT_MARKER = "/at";
@@ -116,7 +119,8 @@ public class TaskList {
                 case DEADLINE:
                     String deadlineName = getInputTaskName(userInput);
                     String deadlineBy = getInputDetails(userInput,DEADLINE_MARKER);
-                    newEntry = new Deadline(deadlineName, deadlineBy);
+                    LocalDate deadlineDate = LocalDate.parse(deadlineBy);
+                    newEntry = new Deadline(deadlineName, deadlineDate);
                     break;
                 case TODO:
                     int nameStartPoint = userInput.indexOf(" ") + 1;
@@ -134,6 +138,8 @@ public class TaskList {
             }
         } catch (StringIndexOutOfBoundsException e) {
             printErrorMessage(ERROR_NO_DETAILS);
+        } catch (DateTimeParseException e) {
+            printErrorMessage(ERROR_DATE_FORMAT);
         }
     }
 
