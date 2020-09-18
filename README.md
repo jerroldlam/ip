@@ -2,26 +2,11 @@
 
 This is a project for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
 
-
-## Setting up in Intellij
-
-Prerequisites: JDK 11, update Intellij to the most recent version.
-
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first)
-1. Set up the correct JDK version, as follows:
-   1. Click `Configure` > `Structure for New Projects` and then `Project Settings` > `Project` > `Project SDK`
-   1. If JDK 11 is listed in the drop down, select it. If it is not, click `New...` and select the directory where you installed JDK 11
-   1. Click `OK`
-1. Import the project into Intellij as follows:
-   1. Click `Open or Import`.
-   1. Select the project directory, and click `OK`
-   1. If there are any further prompts, accept the defaults.
-1. After the importing is complete, locate the `src/main/java/duke/Duke.java` file, right-click it, and choose `Run Duke.main()`. 
-
 ## Features
 
 The current version of Duke supports tracking of 3 unique types of tasks.
 They are `Event`, `Deadline` and `ToDo`.
+Other functions include `list`,`find` and `delete`.
 
 Duke is also able to save and load previously created task list.
 
@@ -33,16 +18,29 @@ When starting the program, _Duke_ will attempt to locate a file called `tasklist
 |---|---|---
 |ToDo | `Todo` _[Task name]_ | `Todo CS2113 Tutorial`
 |Event | `Event` _[Event name]_ /at _[Event Time]_ | `Event BlackPink concert /at Saturday 13 September`
-|Deadline| `Deadline` _[Deadline name]_ /by _[Deadline]_ | `Deadline CS2113 iP /by Week 6`
+|Deadline| `Deadline` _[Deadline name]_ /by _[YYYY-MM-DD]_ | `Deadline CS2113 iP /by 2020-09-18`
 
 Note: Task type keywords can be case-insensitive
+
+Note: Not following the format will result in an error which will be prompted by Duke.
 
 ### Deleting a task in the task list
 To delete a task from the task list, type `delete` followed by the task number to delete.
 
 Format : `delete` {Task Number}
 
+Duke will check if the task number entered exists. If it exists, Duke will echo the task and remove it from the task list. If the task does not exist, Duke will show the user an error message.
+
 Example : `delete 3` , will delete task number 3 from task list.
+
+### Finding a task in the task list
+To find tasks with a keyword, type `find` followed by the keyword.
+
+Format : `find` {keyword}
+
+Duke will iterate thought the task list to find tasks that contain the keyword. Prints out tasks that contain the keyword.
+
+Example : `find carrots` , will print out all tasks and their indexes if the task name contains `carrots`
 
 ### Requesting task list
 To request for task list, type `list` when prompted. The `list` command is case-insensitive.
@@ -52,6 +50,10 @@ To exit the program, type `bye` when prompted. The `bye` command is case-insensi
 
 While exiting the program, Duke will save a copy of your task list as `tasklist.txt`.
 
+## Done by
 
+Display | Name | Github Profile
+---|:---:|:---:
+![](https://avatars3.githubusercontent.com/u/60382285?s=400) | Jerrold Lam  | [jerroldlam](https://github.com/jerroldlam "Github User Profile")
 
 

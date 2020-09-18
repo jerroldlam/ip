@@ -376,6 +376,11 @@ public class TaskList {
         System.out.println(DIVIDER_LINE);
     }
 
+    /**
+     * Searches task list for matching user input and prints out all corresponding tasks and their indexes
+     *
+     * @param userInput input from user
+     */
     public void findTask(String userInput) {
         int taskNameStartPoint = userInput.indexOf(" ") + 1;
         String taskName = userInput.substring(taskNameStartPoint);
@@ -385,6 +390,11 @@ public class TaskList {
         System.out.println(DIVIDER_LINE);
     }
 
+    /**
+     * Prints out all tasks which contains taskName
+     *
+     * @param taskName name of task to be searched
+     */
     private void searchTaskList(String taskName) {
         int numberOfMatchingTasks = 0;
         for (int index = 0; index < taskArrayList.size(); index++) {
