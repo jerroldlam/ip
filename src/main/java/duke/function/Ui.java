@@ -34,6 +34,9 @@ public class Ui {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
+    /**
+     * Shows the user list of available commands for Duke
+     */
     public static void showHelpMessage() {
         System.out.println("Here are some commands that Duke can understand:");
         System.out.println("\tevent {event name} /at {timing}");

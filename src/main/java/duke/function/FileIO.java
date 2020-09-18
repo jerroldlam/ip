@@ -18,6 +18,7 @@ import static duke.function.Ui.printErrorMessage;
 
 public class FileIO {
     private final String ERROR_DATE_FORMAT = "The date format should be in YYYY-MM-DD, which are all integers.";
+    private final String ERROR_LOADING_TEXT_FILE = "List Loading terminated.";
     private final String EVENT_SYMBOL = "[E]";
     private final String TODO_SYMBOL = "[T]";
     private final String DEADLINE_SYMBOL = "[D]";
@@ -62,8 +63,7 @@ public class FileIO {
      */
     public String getTaskAsText(Task task) {
         String taskLine = "";
-        taskLine += task.getTaskSymbol();
-        taskLine += TEXT_DIVIDER;
+        taskLine += task.getTaskSymbol() + TEXT_DIVIDER;
         taskLine += (task.isTaskDone()) ? "1" : "0";
         taskLine += TEXT_DIVIDER;
         taskLine += task.getTaskName();
@@ -129,7 +129,7 @@ public class FileIO {
         } catch (DateTimeParseException e) {
             printErrorMessage(ERROR_DATE_FORMAT);
         }
-        System.out.println("List Loading terminated.");
+        System.out.println(ERROR_LOADING_TEXT_FILE);
         return taskArrayList;
     }
 }

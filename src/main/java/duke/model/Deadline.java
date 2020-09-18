@@ -3,21 +3,23 @@ package duke.model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represent a subclass of Task, called Deadline. It extends task by storing the deadline of the task in a LocalDate
+ * format.
+ */
 public class Deadline extends Task {
     private final String DEADLINE_SYMBOL = "[D]";
     private LocalDate deadlineBy;
 
+    //Constructor
     public Deadline(String taskName,LocalDate deadlineBy) {
         super(taskName);
         setDeadlineBy(deadlineBy);
     }
 
+    //Getters
     public LocalDate getDeadlineBy() {
         return deadlineBy;
-    }
-
-    public void setDeadlineBy(LocalDate deadlineBy) {
-        this.deadlineBy = deadlineBy;
     }
 
     @Override
@@ -33,6 +35,11 @@ public class Deadline extends Task {
     @Override
     public String getDetails() {
         return getDeadlineBy().toString();
+    }
+
+    //Setters
+    public void setDeadlineBy(LocalDate deadlineBy) {
+        this.deadlineBy = deadlineBy;
     }
 
     @Override

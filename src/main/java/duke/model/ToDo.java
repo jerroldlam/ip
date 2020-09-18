@@ -1,5 +1,8 @@
 package duke.model;
 
+/**
+ * Represents a subclass of task.
+ */
 public class ToDo extends Task {
     private final String TODO_SYMBOL = "[T]";
 

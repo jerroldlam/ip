@@ -11,6 +11,9 @@ import static duke.function.Ui.showExitMessage;
 import static duke.function.Ui.showHelpMessage;
 import duke.function.TaskList;
 
+/**
+ * Represents the main Duke program which contains task tracking capabilities
+ */
 public class Duke {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
