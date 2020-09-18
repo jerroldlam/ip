@@ -7,6 +7,7 @@ import static duke.function.CommandParser.userEnteredList;
 import static duke.function.CommandParser.userEnteredDelete;
 import static duke.function.Ui.showWelcomeMessage;
 import static duke.function.Ui.showExitMessage;
+import static duke.function.Ui.showHelpMessage;
 import duke.function.TaskList;
 
 public class Duke {
@@ -19,6 +20,7 @@ public class Duke {
         userTaskList.loadTaskList();
 
         while (true) {
+            showHelpMessage();
             userInput = in.nextLine();
             if (userEnteredBye(userInput)) {
                 break;

@@ -9,10 +9,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static duke.function.Ui.printErrorMessage;
+
 public class FileIO {
+    private final String ERROR_DATE_FORMAT = "The date format should be in YYYY-MM-DD, which are all integers.";
     private final String EVENT_SYMBOL = "[E]";
     private final String TODO_SYMBOL = "[T]";
     private final String DEADLINE_SYMBOL = "[D]";
@@ -88,36 +93,43 @@ public class FileIO {
         String timeDetails = "";
         Task newTaskToAdd = null;
 
-        while (fileScanner.hasNextLine()) {
-            inputLine = fileScanner.nextLine();
-            processedLine = inputLine.split(TEXT_DIVIDER_REGEX);
-            taskType = processedLine[0];
-            isDone = processedLine[1];
-            description = processedLine[2];
+        try {
+            while (fileScanner.hasNextLine()) {
+                inputLine = fileScanner.nextLine();
+                processedLine = inputLine.split(TEXT_DIVIDER_REGEX);
+                taskType = processedLine[0];
+                isDone = processedLine[1];
+                description = processedLine[2];
 
-            if (processedLine.length == 4) {
-                timeDetails = processedLine[3];
-            }
+                if (processedLine.length == 4) {
+                    timeDetails = processedLine[3];
+                }
 
-            switch (taskType) {
-            case TODO_SYMBOL:
-                newTaskToAdd = new ToDo(description);
-                break;
-            case EVENT_SYMBOL:
-                newTaskToAdd = new Event(description,timeDetails);
-                break;
-            case DEADLINE_SYMBOL:
-                newTaskToAdd = new Deadline(description,timeDetails);
-                break;
-            default:
-                //Task Type Error
-                break;
+                switch (taskType) {
+                case TODO_SYMBOL:
+                    newTaskToAdd = new ToDo(description);
+                    break;
+                case EVENT_SYMBOL:
+                    newTaskToAdd = new Event(description, timeDetails);
+                    break;
+                case DEADLINE_SYMBOL:
+                    LocalDate deadlineDate = LocalDate.parse(timeDetails);
+                    newTaskToAdd = new Deadline(description, deadlineDate);
+                    break;
+                default:
+                    //Task Type Error
+                    break;
+                }
+                if (isDone.equals("1")) {
+                    newTaskToAdd.setTaskDone(true);
+                }
+                taskArrayList.add(newTaskToAdd);
             }
-            if (isDone.equals("1")) {
-                newTaskToAdd.setTaskDone(true);
-            }
-            taskArrayList.add(newTaskToAdd);
+            return taskArrayList;
+        } catch (DateTimeParseException e) {
+            printErrorMessage(ERROR_DATE_FORMAT);
         }
+        System.out.println("List Loading terminated.");
         return taskArrayList;
     }
 }
