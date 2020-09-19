@@ -9,13 +9,11 @@ public class Event extends Task {
     private final String EVENT_SYMBOL = "[E]";
     private String period;
 
-    //Constructor
     public Event(String taskName,String period) {
         super(taskName);
         setPeriod(period);
     }
 
-    //Getters
     public String getPeriod() {
         return period;
     }
@@ -35,7 +33,6 @@ public class Event extends Task {
         return getPeriod();
     }
 
-    //Setters
     public void setPeriod(String period) {
         this.period = period;
     }

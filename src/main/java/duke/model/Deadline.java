@@ -11,13 +11,11 @@ public class Deadline extends Task {
     private final String DEADLINE_SYMBOL = "[D]";
     private LocalDate deadlineBy;
 
-    //Constructor
     public Deadline(String taskName,LocalDate deadlineBy) {
         super(taskName);
         setDeadlineBy(deadlineBy);
     }
 
-    //Getters
     public LocalDate getDeadlineBy() {
         return deadlineBy;
     }
@@ -37,7 +35,6 @@ public class Deadline extends Task {
         return getDeadlineBy().toString();
     }
 
-    //Setters
     public void setDeadlineBy(LocalDate deadlineBy) {
         this.deadlineBy = deadlineBy;
     }

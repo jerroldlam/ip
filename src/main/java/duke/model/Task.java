@@ -11,13 +11,11 @@ public abstract class Task {
     private String taskName;
     private boolean taskDone;
 
-    //Constructor
     public Task(String taskName) {
         setTaskName(taskName);
         setTaskDone(false);
     }
 
-    //Getters
     public abstract String getTaskSymbol();
 
     public abstract TaskType getTaskType();
@@ -36,7 +34,6 @@ public abstract class Task {
         }
     }
 
-    //Setters
     public void setTaskName(String taskName) {
         this.taskName = taskName;
     }
