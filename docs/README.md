@@ -22,7 +22,7 @@ Duke is also able to save and load previously created task list.
 ### Starting the program
 When starting the program, _Duke_ will attempt to locate a file called `tasklist.txt` and attempt to load previously saved task list.
 
-Outcome if successful :
+**Outcome if successful :**
 
 ```
 ----------------------------------------------------
@@ -31,7 +31,7 @@ Loaded Tasks Successfully from tasklist.txt
 ----------------------------------------------------
 ```
 
-Outcome if unsuccessful:
+**Outcome if unsuccessful :**
 
 ```
 Loading Text File........
@@ -49,9 +49,9 @@ Overview
 |Event | `Event` _[Event name]_ /at _[Event Time]_ | `Event BlackPink concert /at Saturday 13 September`
 |Deadline| `Deadline` _[Deadline name]_ /by _[YYYY-MM-DD]_ | `Deadline CS2113 iP /by 2020-09-18`
 
-`Note`: Task type keywords can be case-insensitive
+**Note:** Task type keywords can be case-insensitive
 
-`Note`: Not following the format will result in an error which will be prompted by Duke.
+**Note:** Not following the format will result in an error which will be prompted by Duke.
 
 When executed in order, expected outcome is as such :
 
@@ -79,13 +79,13 @@ I'll keep track of it for you!
 ### Deleting a task in the task list
 To delete a task from the task list, type `delete` followed by the task number to delete.
 
-Format : `delete` {Task Number}
+**Format :** `delete` {Task Number}
 
 Duke will check if the task number entered exists. If it exists, Duke will echo the task and remove it from the task list. If the task does not exist, Duke will show the user an error message.
 
-Example : `delete 3` , will delete task number 3 from task list.
+**Example :** `delete 1` , will delete task number 1 from task list.
 
-Outcome: 
+**Outcome :** 
 
 ```
 delete 1
@@ -99,13 +99,13 @@ You have 2 tasks on your list!
 ### Finding a task in the task list
 To find tasks with a keyword, type `find` followed by the keyword.
 
-Format : `find` {keyword}
+**Format :** `find` {keyword}
 
 Duke will iterate thought the task list to find tasks that contain the keyword. Prints out tasks that contain the keyword.
 
-Example : `find concert` , will print out all tasks and their indexes if the task name contains `concert`
+**Example :** `find concert`  will print out all tasks and their indexes if the task name contains `concert`
 
-Outcome:
+**Outcome :**
 
 ```
 ----------------------------------------------------
@@ -118,7 +118,7 @@ There are 1 tasks that fit your search!
 ### Requesting task list
 To request for task list, type `list` when prompted. The `list` command is case-insensitive.
 
-Outcome:
+**Outcome :**
 
 ```
 list
@@ -137,7 +137,7 @@ To exit the program, type `bye` when prompted. The `bye` command is case-insensi
 
 While exiting the program, Duke will save a copy of your task list as `tasklist.txt`.
 
-Outcome:
+**Outcome :**
 
 ```
 bye
