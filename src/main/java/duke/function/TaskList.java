@@ -13,6 +13,8 @@ import duke.model.ToDo;
 import static duke.function.Ui.printErrorMessage;
 
 public class TaskList {
+    private final int TASK_COUNT_INDEX = 0;
+    private final int TASK_COMPLETED_INDEX = 1;
     private final String ERROR_NO_TASK = "You have no tasks yet!";
     private final String ERROR_ADDING_TASK = "Error adding task. I only have todo, deadline and event.";
     private final String ERROR_NO_SUCH_TASK = "There's no such task to finish! Check your list!";
@@ -21,6 +23,7 @@ public class TaskList {
     private final String ERROR_DATE_FORMAT = "The date format should be in YYYY-MM-DD, which are all integers.";
     private final String COMPLETE_TASK_MESSAGE = "Oh jolly! You finally completed this:";
     private final String DELETE_TASK_MESSAGE = "OK! I have removed this task for you:";
+    private final String LOADING_FILE_MESSAGE = "Loading Text File........";
     private final String EVENT_MARKER = "/at";
     private final String DEADLINE_MARKER = "/by";
     private final String DIVIDER_LINE = "----------------------------------------------------";
@@ -317,11 +320,11 @@ public class TaskList {
     }
 
     /**
-     * Loads tasklist from text file
+     * Loads task list from text file
      */
     public void loadTaskList() {
         try {
-            System.out.println("Loading Text File........");
+            System.out.println(LOADING_FILE_MESSAGE);
             taskArrayList = textFile.loadTextFile();
             printLoadTextFileSuccessfully();
             populateTaskListStatistics();
@@ -352,9 +355,9 @@ public class TaskList {
     private int[] getTaskListStatistics (ArrayList<Task> taskArrayList) {
         int[] result = {0,0};
         for (Task t : taskArrayList) {
-            result[0] += 1;
+            result[TASK_COUNT_INDEX] += 1;
             if (t.isTaskDone()) {
-                result[1] += 1;
+                result[TASK_COMPLETED_INDEX] += 1;
             }
         }
         return result;
