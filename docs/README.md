@@ -1,22 +1,152 @@
 # User Guide
 
-## Features 
+## Features
 
-### Feature 1 
-A personal helper which stores list of task to be completed and their respective completeness.
+The current version of Duke supports tracking of 3 unique types of tasks.
+They are `Event`, `Deadline` and `ToDo`.
+Other functions include `list`,`find` and `delete`.
 
-## Usage
-`list` - Lists out tasks and their completeness.
-`bye` - Exits program.
+Overview
 
-### `Keyword` - Describe action
+|Feature name | Feature description
+|:---:|:---:
+|Track `Events`| Tracks Events in your task list
+|Track `Deadline`| Tracks Deadline in your task list
+|Track `Todo`| Tracks Todo in your task list
+|`List` | Prints out the your task list with all events
+|`find` keyword | Searches task list for the given keyword
+|`delete` index | Deletes Task at task index
 
-Describe action and its outcome.
+Duke is also able to save and load previously created task list.
 
-Example of usage: 
+### Starting the program
+When starting the program, _Duke_ will attempt to locate a file called `tasklist.txt` and attempt to load previously saved task list.
 
-`keyword (optional arguments)`
+Outcome if successful :
 
-Expected outcome:
+```
+----------------------------------------------------
+Loading Text File........
+Loaded Tasks Successfully from tasklist.txt
+----------------------------------------------------
+```
 
-`outcome`
+Outcome if unsuccessful:
+
+```
+Loading Text File........
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+tasklist.txt does not exist!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+```
+
+### Adding task to track
+Overview
+
+| Task type to add | Format of command | Example command 
+|:---:|:---:|:---:
+|ToDo | `Todo` _[Task name]_ | `Todo CS2113 Tutorial` 
+|Event | `Event` _[Event name]_ /at _[Event Time]_ | `Event BlackPink concert /at Saturday 13 September`
+|Deadline| `Deadline` _[Deadline name]_ /by _[YYYY-MM-DD]_ | `Deadline CS2113 iP /by 2020-09-18`
+
+`Note`: Task type keywords can be case-insensitive
+
+`Note`: Not following the format will result in an error which will be prompted by Duke.
+
+When executed in order, expected outcome is as such :
+
+```
+Todo CS2113 Tutorial
+----------------------------------------------------
+New task added:
+	[T][✗] CS2113 Tutorial
+I'll keep track of it for you!
+----------------------------------------------------
+Event BlackPink concert /at Saturday 13 September
+----------------------------------------------------
+New task added:
+	[E][✗] BlackPink concert (at: Saturday 13 September)
+I'll keep track of it for you!
+----------------------------------------------------
+Deadline CS2113 iP /by 2020-09-18
+----------------------------------------------------
+New task added:
+	[D][✗] CS2113 iP (by: 2020-09-18)
+I'll keep track of it for you!
+----------------------------------------------------
+```
+
+### Deleting a task in the task list
+To delete a task from the task list, type `delete` followed by the task number to delete.
+
+Format : `delete` {Task Number}
+
+Duke will check if the task number entered exists. If it exists, Duke will echo the task and remove it from the task list. If the task does not exist, Duke will show the user an error message.
+
+Example : `delete 3` , will delete task number 3 from task list.
+
+Outcome: 
+
+```
+delete 1
+----------------------------------------------------
+OK! I have removed this task for you:
+	[T][✗] CS2113 Tutorial
+You have 2 tasks on your list!
+----------------------------------------------------
+```
+
+### Finding a task in the task list
+To find tasks with a keyword, type `find` followed by the keyword.
+
+Format : `find` {keyword}
+
+Duke will iterate thought the task list to find tasks that contain the keyword. Prints out tasks that contain the keyword.
+
+Example : `find concert` , will print out all tasks and their indexes if the task name contains `concert`
+
+Outcome:
+
+```
+----------------------------------------------------
+Here are the matching tasks in your list:
+1. [E][✗] BlackPink concert (at: Saturday 13 September)
+There are 1 tasks that fit your search!
+----------------------------------------------------
+```
+
+### Requesting task list
+To request for task list, type `list` when prompted. The `list` command is case-insensitive.
+
+Outcome:
+
+```
+list
+----------------------------------------------------
+Here is your current task list!
+You have 2 tasks on your list!
+You have completed 0 of them.
+Hope you are on target!
+1. [E][✗] BlackPink concert (at: Saturday 13 September)
+2. [D][✗] CS2113 iP (by: 2020-09-18)
+----------------------------------------------------
+```
+
+### Exiting the program
+To exit the program, type `bye` when prompted. The `bye` command is case-insensitive.
+
+While exiting the program, Duke will save a copy of your task list as `tasklist.txt`.
+
+Outcome:
+
+```
+bye
+----------------------------------------------------
+Task list saved successfully as tasklist.txt
+----------------------------------------------------
+Bye.
+I'm going back to sleep.
+------------Duke has gone back to sleep--------------
+```
+
+## End of user guide
