@@ -17,6 +17,11 @@ import java.util.Scanner;
 import static duke.function.Ui.printErrorMessage;
 
 public class FileIO {
+    private final int TASK_TYPE_INDEX = 0;
+    private final int COMPLETION_INDEX = 1;
+    private final int DESCRIPTION_INDEX = 2;
+    private final int DETAILS_INDEX = 3;
+    private final int FULL_DETAILS = 4;
     private final String ERROR_DATE_FORMAT = "The date format should be in YYYY-MM-DD, which are all integers.";
     private final String ERROR_LOADING_TEXT_FILE = "List Loading terminated.";
     private final String EVENT_SYMBOL = "[E]";
@@ -78,8 +83,8 @@ public class FileIO {
     /**
      * Loads text file of fileName to populate taskArrayList
      *
-     * @return taskArrayList
-     * @throws FileNotFoundException
+     * @return taskArrayList arraylist of laoded tasks
+     * @throws FileNotFoundException thrown when no file with fileName is found
      */
     public ArrayList<Task> loadTextFile() throws FileNotFoundException {
         File inputFile = new File(fileName);
@@ -97,12 +102,12 @@ public class FileIO {
             while (fileScanner.hasNextLine()) {
                 inputLine = fileScanner.nextLine();
                 processedLine = inputLine.split(TEXT_DIVIDER_REGEX);
-                taskType = processedLine[0];
-                isDone = processedLine[1];
-                description = processedLine[2];
+                taskType = processedLine[TASK_TYPE_INDEX];
+                isDone = processedLine[COMPLETION_INDEX];
+                description = processedLine[DESCRIPTION_INDEX];
 
-                if (processedLine.length == 4) {
-                    timeDetails = processedLine[3];
+                if (processedLine.length == FULL_DETAILS) {
+                    timeDetails = processedLine[DETAILS_INDEX];
                 }
 
                 switch (taskType) {
