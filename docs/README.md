@@ -145,6 +145,7 @@ Duke will iterate thought the task list to find tasks that contain the keyword. 
 **Outcome if there is a matching task(s) :**
 
 ```
+find concert
 ----------------------------------------------------
 Here are the matching tasks in your list:
 1. [E][✗] BlackPink concert (at: Saturday 13 September)
@@ -159,12 +160,13 @@ find potato
 ----------------------------------------------------
 Here are the matching tasks in your list:
 There are 0 tasks that fit your search!
+----------------------------------------------------
 ```
 
 ### Exiting the program
-To exit the program, type `bye` when prompted. The `bye` command is case-insensitive.
+To exit the program, type `bye` when prompted.
 
-While exiting the program, Duke will save a copy of your task list as `tasklist.txt`.
+While exiting the program, Duke will save a copy of your task list as `tasklist.txt` in the root folder.
 
 **Outcome if successful :**
 
