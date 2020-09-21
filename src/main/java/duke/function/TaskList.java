@@ -21,6 +21,7 @@ public class TaskList {
     private final String ERROR_NO_INTEGER_DONE = "Please put an integer after done.";
     private final String ERROR_NO_DETAILS = "The details entered are wrong!";
     private final String ERROR_DATE_FORMAT = "The date format should be in YYYY-MM-DD, which are all integers.";
+    private final String ERROR_SAVING_TEXT = "ERROR SAVING TASKS";
     private final String COMPLETE_TASK_MESSAGE = "Oh jolly! You finally completed this:";
     private final String DELETE_TASK_MESSAGE = "OK! I have removed this task for you:";
     private final String LOADING_FILE_MESSAGE = "Loading Text File........";
@@ -315,7 +316,7 @@ public class TaskList {
             textFile.saveAsTextFile(taskArrayList);
             printSaveTextFileSuccessfully();
         } catch (IOException e) {
-            printErrorMessage("ERROR SAVING TASKS");
+            printErrorMessage(ERROR_SAVING_TEXT);
         }
     }
 
