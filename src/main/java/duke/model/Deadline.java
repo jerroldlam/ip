@@ -41,6 +41,7 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return DEADLINE_SYMBOL + super.toString() + " (by: " + getDeadlineBy() + ")";
+        return DEADLINE_SYMBOL + super.toString() + " (by: " +
+                getDeadlineBy().format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
     }
 }

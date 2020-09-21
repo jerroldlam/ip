@@ -6,6 +6,9 @@ public class CommandParser {
     private static final String DONE_COMMAND = "done";
     private static final String FIND_COMMAND = "find";
     private static final String DELETE_COMMAND = "delete";
+    private static final String EVENT_COMMAND = "event";
+    private static final String DEADLINE_COMMAND = "deadline";
+    private static final String TODO_COMMAND = "todo";
 
     /**
      * Returns true if user input requests for the "bye" command,
@@ -54,10 +57,24 @@ public class CommandParser {
     /**
      * Returns true if user input requests for the "find" command,
      * else returns false.
+     *
      * @param userInput
      * @return
      */
     public static boolean userEnteredFind (String userInput) {
-        return(userInput.startsWith(FIND_COMMAND));
+        return(userInput.toLowerCase().startsWith(FIND_COMMAND));
+    }
+
+    /**
+     * Returns true if user input requests for the add tasks command,
+     * else returns false.
+     *
+     * @param userInput
+     * @return
+     */
+    public static boolean userEnteredTask (String userInput) {
+        return (userInput.toLowerCase().startsWith(DEADLINE_COMMAND) ||
+                userInput.toLowerCase().startsWith(EVENT_COMMAND) ||
+                userInput.toLowerCase().startsWith(TODO_COMMAND));
     }
 }
