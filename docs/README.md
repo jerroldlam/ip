@@ -1,5 +1,19 @@
 # User Guide
 
+## Table of contents
+* [Features](#features)
+    * [Starting the program](#starting-the-program)
+    * [Adding task to track](#adding-task-to-track)
+        * [Adding ToDo Task: ](#adding-todo-task) `ToDo`
+        * [Adding Event Task: ](#adding-todo-task) `Event`
+        * [Adding Deadline Task: ](#adding-todo-task) `Deadline`
+    * [Setting a task as complete: ](#setting-a-task-as-complete) `Done`
+    * [Requesting task list: ](#requesting-task-list) `List`
+    * [Deleting a task in task list: ](#deleting-a-task-in-the-task-list) `Delete`
+    * [Finding a task in task list: ](#finding-a-task-in-the-task-list) `Find`
+    * [Exiting the program: ](#exiting-the-program) `Bye`
+* [End of user guide](#end-of-user-guide)
+ 
 ## Features
 
 The current version of Duke supports tracking of 3 unique types of tasks.
@@ -13,6 +27,7 @@ Other functions include `list`,`find` and `delete`.
 |Track `Events`| Tracks Events in your task list
 |Track `Deadline`| Tracks Deadline in your task list
 |Track `Todo`| Tracks Todo in your task list
+|`done` Task | Marks the task as done
 |`List` | Prints out the your task list with all events
 |`find` keyword | Searches task list for the given keyword
 |`delete` index | Deletes Task at task index
@@ -43,7 +58,7 @@ tasklist.txt does not exist!
 ```
 
 ### Adding task to track
-Overview
+**Overview**
 
 | Task type to add | Format of command | Example command 
 |:---:|:---:|:---:
@@ -51,12 +66,19 @@ Overview
 |Event | `Event` _[Event name]_ /at _[Event Time]_ | `Event BlackPink concert /at Saturday 13 September`
 |Deadline| `Deadline` _[Deadline name]_ /by _[YYYY-MM-DD]_ | `Deadline CS2113 iP /by 2020-09-18`
 
-**Note:** Task type keywords can be case-insensitive
-
 **Note:** Not following the format will result in an error which will be prompted by Duke.
 
-When executed in order, expected outcome is as such :
+**Note:** Tasks created will automatically be initialised as undone.
 
+#### Adding ToDo task
+
+**Format :** `ToDo` {Task Name}
+
+**Example :** Todo CS2113 Tutorial
+
+Duke will attempt to add a task of type `ToDo` with the name of {Task Name} into the task list. 
+
+**Outcome if successful :**
 ```
 Todo CS2113 Tutorial
 ----------------------------------------------------
@@ -64,12 +86,38 @@ New task added:
 	[T][✗] CS2113 Tutorial
 I'll keep track of it for you!
 ----------------------------------------------------
+```
+
+#### Adding Event task
+
+**Format :** `Event` {Event Name} /at {Event Details}
+
+**Example :** Event BlackPink concert /at Saturday 13 September
+
+Duke will attempt to add a task of type `Event` with the name of {Event Name} and details of {Event Details} into the task list. 
+
+**Outcome if successful :**
+```
 Event BlackPink concert /at Saturday 13 September
 ----------------------------------------------------
 New task added:
 	[E][✗] BlackPink concert (at: Saturday 13 September)
 I'll keep track of it for you!
 ----------------------------------------------------
+```
+
+#### Adding Deadline task
+
+**Format :** `Deadline` {Deadline Name} /by {Deadline Details}
+
+**Note :** Deadline Details should be of the format YYYY-MM-DD 
+
+**Example :** Deadline CS2113 iP /by 2020-09-18
+
+Duke will attempt to add a task of type `Deadline` with the name of {Deadline Name} and details of {Deadline Details} into the task list. 
+
+**Outcome if successful :**
+```
 Deadline CS2113 iP /by 2020-09-18
 ----------------------------------------------------
 New task added:
@@ -78,8 +126,31 @@ I'll keep track of it for you!
 ----------------------------------------------------
 ```
 
+### Setting a task as complete
+To mark a task as completed, type `done` followed by the integer of the task index to be completed.
+
+**Format :** `Done` {task number}
+
+Duke will check if the task number exists in your task list, then set the task as completed. When marked as completed, the `✗` will be replaced by a `✓`. Duke will echo back the task marked as completed to acknowledge successful completion. 
+
+**Outcome if successful :**
+```
+done 2
+----------------------------------------------------
+Oh jolly! You finally completed this:
+	[E][✓] BlackPink concert (at: Saturday 13 September)
+----------------------------------------------------
+```
+**Outcome if unsuccessful :**
+```
+done 4
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+There's no such task to finish! Check your list!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+```
+
 ### Requesting task list
-To request for task list, type `list` when prompted. The `list` command is case-insensitive.
+To request for task list, type `list` when prompted. 
 
 **Outcome example if there is at least one task your task list :**
 
@@ -91,7 +162,7 @@ You have 2 tasks on your list!
 You have completed 0 of them.
 Hope you are on target!
 1. [T][✗] CS2113 Tutorial
-2. [E][✗] BlackPink concert (at: Saturday 13 September)
+2. [E][✓] BlackPink concert (at: Saturday 13 September)
 3. [D][✗] CS2113 iP (by: Sep 18 2020)
 ----------------------------------------------------
 ```
@@ -140,7 +211,7 @@ To find tasks with a keyword, type `find` followed by the keyword.
 
 Duke will iterate thought the task list to find tasks that contain the keyword. Prints out tasks that contain the keyword.
 
-**Example :** `find concert`  will print out all tasks and their indexes if the task name contains `concert`
+**Example :** `find concert`  will print out all tasks and their indexes, if the task name contains the keyword `concert`.
 
 **Outcome if there is a matching task(s) :**
 
@@ -148,7 +219,7 @@ Duke will iterate thought the task list to find tasks that contain the keyword. 
 find concert
 ----------------------------------------------------
 Here are the matching tasks in your list:
-1. [E][✗] BlackPink concert (at: Saturday 13 September)
+1. [E][✓] BlackPink concert (at: Saturday 13 September)
 There are 1 tasks that fit your search!
 ----------------------------------------------------
 ```
