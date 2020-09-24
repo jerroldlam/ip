@@ -5,8 +5,8 @@
     * [Starting the program](#starting-the-program)
     * [Adding task to track](#adding-task-to-track)
         * [Adding ToDo Task: ](#adding-todo-task) `ToDo`
-        * [Adding Event Task: ](#adding-todo-task) `Event`
-        * [Adding Deadline Task: ](#adding-todo-task) `Deadline`
+        * [Adding Event Task: ](#adding-event-task) `Event`
+        * [Adding Deadline Task: ](#adding-deadline-task) `Deadline`
     * [Setting a task as complete: ](#setting-a-task-as-complete) `Done`
     * [Requesting task list: ](#requesting-task-list) `List`
     * [Deleting a task in task list: ](#deleting-a-task-in-the-task-list) `Delete`
