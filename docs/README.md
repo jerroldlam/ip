@@ -1,4 +1,8 @@
-# User Guide
+# User Guide - Duke Personal Assistant
+
+Duke is a command-line application which is able to keep track of your upcoming schedule. 
+There are 3 main types of tasks, `ToDo`, `Deadline` and `Event`. Each task type stores its own unique details and are easily accessed and managed by Duke.
+Supplementary functions include `Find`,`Delete`, `Done`, and `List`. Duke is also able to automatically load a saved schedule from text file and save your current task list into a text file.
 
 ## Table of contents
 * [Features](#features)
