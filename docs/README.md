@@ -162,7 +162,7 @@ To request for task list, type `list` when prompted.
 list
 ----------------------------------------------------
 Here is your current task list!
-You have 2 tasks on your list!
+You have 3 tasks on your list!
 You have completed 0 of them.
 Hope you are on target!
 1. [T][✗] CS2113 Tutorial
@@ -202,7 +202,7 @@ You have 2 tasks on your list!
 
 **Outcome if task to be deleted does not exist :** 
 ```
-delete 1
+delete 4
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 There's no such task to finish! Check your list!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
